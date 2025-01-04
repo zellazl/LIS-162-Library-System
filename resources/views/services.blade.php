@@ -118,8 +118,8 @@
                     </ul>
                 </div>
             </nav>
+            <h1 class="text-5xl font-bold absolute right-12">SERVICES</h1>
         </div>
-        <h1 class="text-5xl font-bold absolute right-12">SERVICES</h1>
     </header>
     
     <div class="container">
