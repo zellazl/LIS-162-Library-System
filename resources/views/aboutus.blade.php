@@ -61,7 +61,7 @@
         </div>
     </body>
     <img src="images/gabi_no.png" alt="Mascot" class="absolute left-1/2 transform -translate-x-1/2 w-auto h-80"> 
-    <footer class="mt-20 -mx-8 text-center py-4 relative absolute -bottom-24" style='background-color: #fddc58'>
+    <footer class="mt-20 -mx-12 text-center py-4 relative absolute -bottom-24" style='background-color: #fddc58'>
         <p class="mt-16 text-sm font-bold">UP School of Library and Information Science Studies Library</p>
         <p class="mb-8 text-sm">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
     </footer>
