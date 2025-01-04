@@ -21,7 +21,9 @@
                             href="{{ url('/dashboard') }}"
                             class="text-base font-bold rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-amber-600/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-black dark:hover:text-amber-600/80 dark:focus-visible:ring-black"
                         >
-                            Student0441 
+                            
+                            {{ auth()->user()->name }}
+                            
                         </a>
                         <div class="relative bg-amber-100">
                             <div class="absolute -top-8 right-0">
