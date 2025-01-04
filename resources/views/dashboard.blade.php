@@ -12,9 +12,6 @@
     </head>
     <!--CSS-->
     <style>
-        body {  
-
-        }
         table {
             table-layout: auto;
             width: 100%;
@@ -33,26 +30,23 @@
                 <div class="block mt-4">
                     <a href="/" class="text-xl font-bold text-amber-800">UP SLIS LIBRARY<br></a>
                     <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm pe-1 font-bold text-gray-900 rounded-full hover:text-blue-600 dark:hover:text-amber-600 md:me-0 dark:text-black" type="button">
-                        Student0441
+                        {{ auth()->user()->name }}
                     </button>
                 
-                    <div id="dropdownAvatarName" class="hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-amber-100 dark:divide-white">
+                    <div id="dropdownAvatarName" class="hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-white dark:divide-slate-100">
                         <div class="px-4 py-3 text-sm text-white dark:text-black">
                             <div>Welcome</div>
-                            <div class="font-bold truncate">Student0441</div>
+                            <div class="font-bold truncate">{{ auth()->user()->email }}</div>
                         </div>
                         <ul class="py-2 text-sm text-black dark:text-black" aria-labelledby="dropdownUserAvatarNameButton">
                             <li>
                                 <a href= "{{ route('profile.show') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Profile</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Reservations</a>
+                                <a href="/reservations" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Reservations</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Requests</a>
-                            </li>
-                            <li>
-                                <a href="#" class="hidden px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Statistics</a>
+                                <a href="/requests" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Requests</a>
                             </li>
                         </ul>
                         <div class="py-2">
