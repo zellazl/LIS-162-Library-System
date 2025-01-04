@@ -6,6 +6,7 @@
         <link rel="icon" href="images/logo_no.png">
         <title>Contact Us</title>
         <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
 
         <style>
             .contact-us {
@@ -34,7 +35,22 @@
                 <a href="/" class="hover:text-amber-600">Home</a>
                 <a href="/about_us" class="hover:text-amber-600">About Us</a>
                 <a href="/contact_us" class="hover:text-amber-600">Contact Us</a>
-                <a href="/services" class="hover:text-amber-600">Services</a>
+                <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm pe-1 font-bold text-gray-900 rounded-full hover:text-blue-600 dark:hover:text-amber-600 md:me-0 dark:text-black" type="button">
+                    <a class="hover:text-amber-600">Services</a>
+                </button>
+                <div id="dropdownAvatarName" class="hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-white dark:divide-gray">
+                    <ul class="py-2 text-sm text-black dark:text-black" aria-labelledby="dropdownUserAvatarNameButton">
+                        <li>
+                            <a href="/services" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Services</a>
+                        </li>
+                        <li>
+                            <a href="/collection" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Collection</a>
+                        </li>
+                        <li>
+                            <a href="/resources" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Resources</a>
+                        </li>
+                    </ul>
+                </div>
             </nav>
         </div>
     </header>
