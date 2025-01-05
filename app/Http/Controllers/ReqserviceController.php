@@ -12,7 +12,7 @@ class ReqserviceController extends Controller
      */
     public function index()
     {
-        $reqservices = Reqservice::get()
+        $reqservices = Reqservice::get();
         return view ('reqservice.index', compact ('reqservices'));
     }
 
