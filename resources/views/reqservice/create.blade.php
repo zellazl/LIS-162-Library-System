@@ -43,16 +43,6 @@
              <input type="string" name="service_name" id="" class="block w-full rounded-md border-0 pl-2 px-3 py-5 text-base font-mono font-medium text-yellow-900 shadow-sm ring-1 ring-inset ring-gray-300">
          </div>
 
-         <div class="mt-6">
-             <button type="submit" class="rounded-md bg-yellow-900 px-3 py-2 text-sm font-mono text-white shadow-sm hover:bg-yellow-600">Save</button>
-         </div> 
-        
-        <div class="mt-3">
-        <button type="button" class="text-sm font-mono text-yellow-900">
-                 <a href="{{ route ('reqservices.index') }}">Cancel</a>
-                 </button>
-         </div>
-
          </form>
 
                 </div>
