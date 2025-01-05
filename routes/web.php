@@ -13,4 +13,6 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
+
+    Route::resource('requests', RequestController::class);
 });
