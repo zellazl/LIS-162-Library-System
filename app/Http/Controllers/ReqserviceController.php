@@ -44,7 +44,8 @@ class ReqserviceController extends Controller
      */
     public function show(Reqservice $reqservice)
     {
-        //
+        $reqservice = Reqservice::findOrFail($reqservice->id);
+        return view('reqservice.show', compact ('reqservice'));
     }
 
     /**
