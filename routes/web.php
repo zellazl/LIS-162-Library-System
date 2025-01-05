@@ -32,29 +32,25 @@ Route::get('/resources', function () {
     return view('resources');
 });
 //Users
-Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])
-->group(function () {
-    //Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-});
-//Admin
-Route::middleware(['auth:sanctum', 'verified', 'can:admin'])
-->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-}); 
+Route::middleware(['auth:sanctum', 'verified'])->group(function () { 
+    Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard'); 
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard'); });
 
 //Login so admin will be redirected sa /admin/dashboard
 Route::post('/login', function (Request $request) {
     $credentials = $request->only('email', 'password');
     if (Auth::attempt($credentials)) {
         $user = Auth::user();
-        if ($user->role === 'admin') {
+        if ($user->role == 'admin') {
             return redirect('/admin/dashboard');
         }
         // Default for users
-        return redirect('/dashboard'); 
+        return redirect('/dashboard');
     }
+    return back()->withErrors(['email' => 'Invalid credentials.']);
 });
+
+
 
 
 // Request-Services route, user view 
