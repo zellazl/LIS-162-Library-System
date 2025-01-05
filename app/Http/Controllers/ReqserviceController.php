@@ -30,11 +30,11 @@ class ReqserviceController extends Controller
     public function store(Request $request)
     {
         $reqserviceData = [
+            'user_fullname' => $request->input('user_fullname'),
+            'user_email' => $request->input('user_email'),
             'service_date' => $request->input('service_date'),
             'time_slot' => $request->input('time_slot'),
-            'service_name' => $request->input('service_name'),
-            'user_email' => $request->input('user_email'),
-            'user_fullname' => $request->input('user_fullname')
+            'service_name' => $request->input('service_name')
         ];
 
         Reqservice::create($reqserviceData);
