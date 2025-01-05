@@ -29,7 +29,14 @@ class ReqserviceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reqserviceData = [
+            'service_date' => $request->input('service_date')
+            'time_slot' => $request->input('time_slot')
+            'service_name' => $request->input('service_name')
+        ];
+
+        Reqservice::create($reqserviceData);
+        return redirect()->route(reqservice.index);
     }
 
     /**
