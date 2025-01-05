@@ -34,6 +34,8 @@
          </tr>
         @endforeach
     </table>
+    <button type="button class-0 left-0 rounded-md bg-yellow-200 hover:bg-yellow-100 px3 py-2 mt-8 text-sm font-semibold text-black text-yellow-900 object-contain">
+        <a href="{{ route('reqservices.create') }}">Go to input</a>
                 </div>
             </div>
         </div>
