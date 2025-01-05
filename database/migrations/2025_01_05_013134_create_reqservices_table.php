@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->softDeletes();
+            $table->string('user_email')->unique();
+            $table->foreign('user_email')->references('email')->on('users');
             $table->date('service_date');
             $table->string('time_slot');
             $table->string('service_name');

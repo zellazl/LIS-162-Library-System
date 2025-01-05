@@ -32,7 +32,8 @@ class ReqserviceController extends Controller
         $reqserviceData = [
             'service_date' => $request->input('service_date'),
             'time_slot' => $request->input('time_slot'),
-            'service_name' => $request->input('service_name')
+            'service_name' => $request->input('service_name'),
+            'user_email' => $request->input('user_email')
         ];
 
         Reqservice::create($reqserviceData);

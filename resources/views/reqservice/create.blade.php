@@ -43,7 +43,20 @@
              <input type="string" name="service_name" id="" class="block w-full rounded-md border-0 pl-2 px-3 py-5 text-base font-mono font-medium text-yellow-900 shadow-sm ring-1 ring-inset ring-gray-300">
          </div>
 
+         <div class="col-span-full"></div>
+         <label for="user_email" class="block text-sm/6 font-mono font-medium italic text-yellow-900">Please leave your email for contact.</label>
+         <div class="mt-2">
+             <input type="string" name="user_email" id="" class="block w-full rounded-md border-0 pl-2 px-3 py-5 text-base font-mono font-medium text-yellow-900 shadow-sm ring-1 ring-inset ring-gray-300">
+         </div>
+
+         <div class="mt-6">
+             <button type="submit" class="rounded-md bg-yellow-900 px-3 py-2 text-sm font-mono text-white shadow-sm hover:bg-yellow-600">Save</button>
+         </div> 
+
          </form>
+
+        
+                </div>
 
                 </div>
             </div>
