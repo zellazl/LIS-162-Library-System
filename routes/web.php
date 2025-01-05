@@ -19,4 +19,5 @@ Route::middleware([
 
 // Request-Services route, user view 
     Route::resource('reqservices', Reqservicecontroller::class);
+    
 
