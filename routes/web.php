@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ReqserviceController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,3 +35,8 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
 });
+
+// Request-Services route, user view 
+    Route::resource('reqservices', Reqservicecontroller::class);
+    
+
