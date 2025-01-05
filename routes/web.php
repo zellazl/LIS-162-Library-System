@@ -12,16 +12,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
-    //Route sa request
-    Route::resource('requests', RequestController::class);
-
 Route::get('/about_us', function () {
     return view('aboutus');
 });
