@@ -24,6 +24,14 @@
             <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
             <td class="border border-slate-300 px-6 py-3">{{ $reqservice->id }}</td>
 
+            <th class="border border-slate-300 px-6 py-3">Full name</th>
+            <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
+            <td class="border border-slate-300 px-6 py-3">{{ $reqservice->user_fullname }}</td>
+
+            <th class="border border-slate-300 px-6 py-3">Email</th>
+            <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
+            <td class="border border-slate-300 px-6 py-3">{{ $reqservice->user_email }}</td>
+
             <th class="border border-slate-300 px-6 py-3">Type of Service</th>
             <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
             <td class="border border-slate-300 px-6 py-3">{{ $reqservice->service_name }}</td>

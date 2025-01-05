@@ -26,6 +26,12 @@
          @csrf
 
          <div class="col-span-full">
+         <label for="user_fullname" class="block text-sm/6 font-mono font-medium italic text-yellow-900">Please input your name as follows: LAST NAME, Given MI.</label>
+         <div class="mt-2">
+             <input type="string" name="user_fullname" id="" class="block w-full rounded-md border-0 pl-2 px-3 py-5 text-base font-mono font-medium text-yellow-900 shadow-sm ring-1 ring-inset ring-gray-300">
+         </div>
+
+         <div class="col-span-full">
          <label for="service_date" class="block text-sm/6 font-mono font-medium italic text-yellow-900">When would you like your appointment?</label>
          <div class="mt-2">
              <input type="date" name="service_date" id="" class="block w-full rounded-md border-0 pl-2 px-3 py-5 text-base font-mono font-medium text-yellow-900 shadow-sm ring-1 ring-inset ring-gray-300">

@@ -36,7 +36,7 @@ Route::middleware([
     Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
 });
 
-// Request-Services route, user view 
+
     Route::resource('reqservices', Reqservicecontroller::class);
     
     
