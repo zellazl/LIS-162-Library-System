@@ -43,15 +43,6 @@
                                 <a href= "{{ route('profile.show') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Profile</a>
                             </li>
                             <li>
-                                <a href="" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Reservations</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('reqservices.create') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Service Requests</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('reqresources.create') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Resource Requests</a>
-                            </li>
-                            <li>
                                 <a href="" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Statistics</a>
                             </li>
                         </ul>
@@ -84,7 +75,7 @@
                 <label for="resourcereq" class="peer-checked/resourcereq:text-amber-800 mr-4">Resource</label>
               
                 <div class="hidden peer-checked/reservations:block">
-                    <table>
+                    <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
                         <thead>
                             <tr>
                                 <th class="border border-slate-300 px-6 py-3">ID</th>
@@ -99,19 +90,19 @@
                         <tbody>
                             @foreach($reservations as $reservation)
                                 <tr>
-                                <td class="border border-slate-300 px-4 py-1">{{ $reservation->id }}</td>
-                                <td class="border border-slate-300 px-4 py-1">{{ $reservation->user->email }}</td>
-                                <td class="border border-slate-300 px-4 py-1">{{ $reservation->facility }}</td>
-                                <td class="border border-slate-300 px-4 py-1">{{ $reservation->from }}-{{ $reservation->until }}</td>
-                                <td class="border border-slate-300 px-4 py-1">{{ $reservation->reservation_date }}</td>
-                                <td class="border border-slate-300 px-4 py-1">{{ $reservation->created_at }}</td>
-                                <td class="border border-slate-300 px-4 py-1">
-                                    <form action="{{ route('reservations.destroy', ['reservation'=>$reservation->id]) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
-                                    </form>
-                                </td>
+                                    <td class="border border-slate-300 px-4 py-1">{{ $reservation->id }}</td>
+                                    <td class="border border-slate-300 px-4 py-1">{{ $reservation->user->email }}</td>
+                                    <td class="border border-slate-300 px-4 py-1">{{ $reservation->facility }}</td>
+                                    <td class="border border-slate-300 px-4 py-1">{{ $reservation->from }}-{{ $reservation->until }}</td>
+                                    <td class="border border-slate-300 px-4 py-1">{{ $reservation->reservation_date }}</td>
+                                    <td class="border border-slate-300 px-4 py-1">{{ $reservation->created_at }}</td>
+                                    <td class="border border-slate-300 px-4 py-1">
+                                        <form action="{{ route('reservations.destroy', ['reservation'=>$reservation->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
