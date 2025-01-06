@@ -4,16 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Requests</title>
+    <link rel="icon" href="{{ asset('images/logo_no.png') }}">
+    <title>Requests Index</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: #f9f9f9;
-            color: #333;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -108,25 +104,14 @@
 </head>
 
 <body>
-    <header class="services flex items-center space-x-4 pl-10">
+    <header class="flex items-center space-x-4 pl-10">
+        <a href="/" class="flex-shrink-0">
+            <img class="h-20 w-auto" src="{{ asset('images/logo_no.png') }}" alt="Logo">
+        </a>
         <div>
-            <h1 class="text-xl font-bold text-amber-800">Services</h1>
+            <a href="/" class="text-xl font-bold text-amber-800">UP SLIS LIBRARY</a>
             <nav class="flex space-x-8 mt-2 text-sm font-bold">
-                <a href="/" class="hover:text-amber-600">Home</a>
-                <a href="/about_us" class="hover:text-amber-600">About Us</a>
-                <a href="/contact_us" class="hover:text-amber-600">Contact Us</a>
-                <div class="relative">
-                    <button id="dropdownAvatarNameButton" class="flex items-center text-sm font-bold text-gray-900 rounded-full hover:text-blue-600">
-                        <span class="hover:text-amber-600">Services</span>
-                    </button>
-                    <div id="dropdownAvatarName" class="hidden absolute right-0 bg-white border border-gray-300 rounded shadow-lg mt-2">
-                        <ul>
-                            <li><a href="/services" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Services</a></li>
-                            <li><a href="/collection" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Collection</a></li>
-                            <li><a href="/resources" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Resources</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <a href="/dashboard" class="hover:text-amber-600">Dashboard</a>
             </nav>
         </div>
     </header>
@@ -137,7 +122,6 @@
                 <tr>
                     <th>Service Request ID</th>
                     <th>Full Name</th>
-                    <th>Email</th>
                     <th>Type of Service</th>
                     <th>Date of Service</th>
                     <th>Timeslot</th>
@@ -148,7 +132,6 @@
                 <tr>
                     <td>{{ $reqservice->id }}</td>
                     <td>{{ $reqservice->user_fullname }}</td>
-                    <td>{{ $reqservice->user_email }}</td>
                     <td>{{ $reqservice->service_name }}</td>
                     <td>{{ $reqservice->service_date }}</td>
                     <td>{{ $reqservice->time_slot }}</td>
