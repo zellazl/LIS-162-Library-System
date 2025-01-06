@@ -8,7 +8,7 @@
     <header class="bg-yellow-600 w-screen py-5 flex pl-5 sticky top-0 z-10">
 
         <div class="text-left">
-            <h1 class="text-4x1 font-black italic text-white">Services</h1>
+            <h1 class="text-4x1 font-black italic text-white">Resources</h1>
         </div>
      </header>
 
@@ -20,34 +20,39 @@
     
     <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
         <tr>
-            <th class="border border-slate-300 px-6 py-3">Service Request ID</th>
+            <th class="border border-slate-300 px-6 py-3">Resource Request ID</th>
             <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
-            <td class="border border-slate-300 px-6 py-3">{{ $reqservice->id }}</td>
+            <td class="border border-slate-300 px-6 py-3">{{ $reqresource->id }}</td>
 
             <th class="border border-slate-300 px-6 py-3">Full name</th>
             <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
-            <td class="border border-slate-300 px-6 py-3">{{ $reqservice->user_fullname }}</td>
+            <td class="border border-slate-300 px-6 py-3">{{ $reqresource->user_fullname }}</td>
 
             <th class="border border-slate-300 px-6 py-3">Email</th>
             <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
-            <td class="border border-slate-300 px-6 py-3">{{ $reqservice->user_email }}</td>
+            <td class="border border-slate-300 px-6 py-3">{{ $reqresource->user_email }}</td>
 
-            <th class="border border-slate-300 px-6 py-3">Type of Service</th>
+            <th class="border border-slate-300 px-6 py-3">Claim Date</th>
             <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
-            <td class="border border-slate-300 px-6 py-3">{{ $reqservice->service_name }}</td>
+            <td class="border border-slate-300 px-6 py-3">{{ $reqresource->claim_date }}</td>
 
-            <th class="border border-slate-300 px-6 py-3">Date of Service</th>
+            <th class="border border-slate-300 px-6 py-3">Resource Title</th>
             <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
-            <td class="border border-slate-300 px-6 py-3">{{ $reqservice->service_date }}</td>
+            <td class="border border-slate-300 px-6 py-3">{{ $reqresource->resource_title }}</td>
 
-            <th class="border border-slate-300 px-6 py-3">Timeslot</th>
+            <th class="border border-slate-300 px-6 py-3">Resource Author</th>
             <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
-            <td class="border border-slate-300 px-6 py-3">{{ $reqservice->time_slot }}</td>
+            <td class="border border-slate-300 px-6 py-3">{{ $reqresource->resource_author }}</td>
+
+            <th class="border border-slate-300 px-6 py-3">Resource Accession Number</th>
+            <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
+            <td class="border border-slate-300 px-6 py-3">{{ $reqresource->resource_accession_number }}</td>
+
          </tr>
         
     </table>
     <button type="button class-0 left-0 rounded-md bg-yellow-200 hover:bg-yellow-100 px3 py-2 mt-8 text-sm font-semibold text-black text-yellow-900 object-contain">
-        <a href="{{ route('reqservices.create') }}">Go to input</a>
+        <a href="{{ route('reqresources.create') }}">Go to input</a>
                 </div>
             </div>
         </div>
