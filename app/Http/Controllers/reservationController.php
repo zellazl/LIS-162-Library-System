@@ -51,9 +51,8 @@ class reservationController extends Controller
             'until' =>$request->input('until'),
         ];
 
-        Reservation::create($reservationData);
-
-        return redirect()->route('reservations.index');
+        $reservation = Reservation::create($reservationData);
+        return redirect()->route('reservations.show', $reservation->id);
     }
 
     public function show(Reservation $reservation)
