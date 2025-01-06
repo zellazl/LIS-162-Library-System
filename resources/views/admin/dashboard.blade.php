@@ -124,7 +124,7 @@
                             <th class="border border-slate-300 px-6 py-3">Type of Service</th>
                             <th class="border border-slate-300 px-6 py-3">Date of Service</th>
                             <th class="border border-slate-300 px-6 py-3">Timeslot</th>
-                            <th class="border border-slate-300 px-6 py-3">Transaction Status</th>
+                            <th class="border border-slate-300 px-6 py-3">Order Date</th>
                         </tr>
                         @foreach($reqservices as $reqservice)
                         <tr>
@@ -133,7 +133,7 @@
                             <td class="border border-slate-300 px-4 py-1">{{ $reqservice->service_name }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqservice->service_date }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqservice->time_slot }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->transaction_status }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->created_at }}</td>
                             <td>
                                  <form action="{{ route('reqservices.destroy', $reqservice->id) }}" method="POST">
                                 @csrf
@@ -154,7 +154,7 @@
                             <th class="border border-slate-300 px-6 py-3">Title</th>
                             <th class="border border-slate-300 px-6 py-3">Author</th>
                             <th class="border border-slate-300 px-6 py-3">Accession Number</th>
-                            <th class="border border-slate-300 px-6 py-3">Transaction Status</th>
+                            <th class="border border-slate-300 px-6 py-3">Order Date</th>
                         </tr>
                         @foreach($reqresources as $reqresource)
                         <tr>
@@ -164,7 +164,7 @@
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_title }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_author }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_accession_number }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->transaction_status }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->created_at }}</td>
                             <td>
                                 <form action="{{ route('reqresources.destroy', $reqresource->id) }}" method="POST">
                                 @csrf
