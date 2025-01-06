@@ -12,16 +12,17 @@ class AdminController extends Controller
     {
         // Fetch all reqservices and reqresources from the database
         $reqservices = Reqservice::all();
+        $reqresources = Reqresource::all();
         $reservation = Reservation::all();
-        //$reqResources = ReqResource::all();
 
         // Pass the data to the admin view
-        //return view('admin.dashboard', compact('reqServices', 'reqResources'));
-        return view('admin.dashboard', compact('reqservices', 'reservation'));
+        return view('admin.dashboard', compact('reqservices', 'reqresources', 'reservation'));
     }
-
-    public function destroy(string $id)
+    
+     public function destroy(string $id)
     {
+        $delRecord = Reqservice::findOrFail($id);
+        $delRecord = Reqresource::findOrFail($id);
         $delRecord = Reservation::findOrFail($id);
         $delRecord->delete();
         
