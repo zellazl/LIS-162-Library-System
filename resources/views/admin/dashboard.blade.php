@@ -97,7 +97,7 @@
                                     <td class="border border-slate-300 px-4 py-1">{{ $reservation->reservation_date }}</td>
                                     <td class="border border-slate-300 px-4 py-1">{{ $reservation->created_at }}</td>
                                     <td class="border border-slate-300 px-4 py-1">
-                                        <form action="{{ route('reservations.destroy', ['reservation'=>$reservation->id]) }}" method="POST">
+                                        <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
@@ -161,9 +161,9 @@
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->created_at }}</td>
                             <td class="border border-slate-300 px-4 py-1">
                                 <form action="{{ route('reqresources.destroy', $reqresource->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                                    @method('DELETE')
+                                    @csrf
                                 </form>
                             </td>
                         </tr>
