@@ -34,7 +34,7 @@
                     </button>
                 
                     <div id="dropdownAvatarName" class="hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-white dark:divide-slate-100">
-                        <div class="px-4 py-3 text-sm text-white dark:text-black">
+                        <div class="px-4 py-3 text-sm text-black">
                             <div>Welcome</div>
                             <div class="font-bold truncate">{{ auth()->user()->email }}</div>
                         </div>
@@ -46,7 +46,10 @@
                                 <a href="" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Reservations</a>
                             </li>
                             <li>
-                                <a href="{{ route('reqservices.create') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Requests</a>
+                                <a href="{{ route('reqservices.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Facility Requests</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('reqresources.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Resource Requests</a>
                             </li>
                             <li>
                                 <a href="" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Statistics</a>
@@ -69,102 +72,12 @@
 
         <div class="w-3/4 mt-12 mx-36">
             <h2 class="text-4xl font-bold mb-4 border-b-4 border-b-slate rounded-sm w-full">Dashboard</h2>
-            <fieldset>
-                <input id="reservations" class="peer/reservations" type="radio" name="status" checked />
-                <label for="reservations" class="peer-checked/reservations:text-amber-800 mr-4">Reservations</label>
-              
-                <input id="requests" class="peer/requests" type="radio" name="status" />
-                <label for="requests" class="peer-checked/requests:text-amber-800 mr-4">Requests</label>
-              
-                <div class="hidden peer-checked/reservations:block">
-                    <table>
-                        <thead class="bg-amber-200">
-                            <tr>
-                                <th>ID</th>
-                                <th>Date</th>
-                                <th>Facility</th>
-                                <th>Reservation Date</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>1</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>2</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-            
-                        </tbody>
-                    </table>
-                </div>
-                <div class="hidden peer-checked/requests:block">
-                    <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
-                        <tr>
-                            <th class="border border-slate-300 px-6 py-3">Service Request ID</th>
-                            <th class="border border-slate-300 px-6 py-3">Type of Service</th>
-                            <th class="border border-slate-300 px-6 py-3">Date of Service</th>
-                            <th class="border border-slate-300 px-6 py-3">Timeslot</th>
-                        </tr>
-                        @foreach($reqservices as $reqservice)
-                        <tr>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->id }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->service_name }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->service_date }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->time_slot }}</td>
-                        </tr>
-                        @endforeach
-                    </table>
-                </div>
-            </fieldset>
+            <p class="text-xl font-bold">Welcome back, {{ auth()->user()->name }}!</p>
         </div>
     </body>
     <!-- Footer -->
-    <img src="{{ asset('images/gabi_no.png') }}" alt="Mascot" class="absolute left-1/2 transform -translate-x-1/2 w-auto h-80"> 
-    <footer class="mt-20 text-center py-4 relative absolute -bottom-24" style='background-color: #fddc58'>
+    <img src="{{ asset('images/gabi_no.png') }}" alt="Mascot" class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-auto h-80"> 
+    <footer class="mt-20 text-center py-4 relative absolute -bottom-48" style='background-color: #fddc58'>
         <p class="mt-16 text-sm font-bold">UP School of Library and Information Science Studies Library</p>
         <p class="mb-8 text-sm">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
     </footer>
