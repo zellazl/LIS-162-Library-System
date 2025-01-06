@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('service_date');
             $table->string('time_slot');
             $table->string('service_name');
-            $table->string('transaction_status');
+            $table->string('transaction_status')->nullable();
         });
     }
 
