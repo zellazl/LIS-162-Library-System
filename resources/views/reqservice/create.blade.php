@@ -119,7 +119,7 @@
 </head>
 
 <body>
-    <header class="services flex items-center space-x-4 pl-10 mt-4">
+    <header class="flex items-center space-x-4 pl-10 mt-4">
         <a href="/" class="flex-shrink-0">
             <img class="h-20 w-auto" src="{{ asset('images/logo_no.png') }}" alt="Logo">
         </a>
