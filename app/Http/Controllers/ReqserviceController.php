@@ -37,8 +37,8 @@ class ReqserviceController extends Controller
             'service_name' => $request->input('service_name')
         ];
 
-        $requestsdata = Reqservice::create($reqserviceData);
-        return redirect()->route('reqservices.show', $requestsData->id);
+        Reqservice::create($reqserviceData);
+        return redirect()->route('reqservices.show', $reqserviceData->id);
 
     }
 
