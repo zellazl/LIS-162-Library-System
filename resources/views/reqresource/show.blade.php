@@ -28,10 +28,6 @@
             <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
             <td class="border border-slate-300 px-6 py-3">{{ $reqresource->user_fullname }}</td>
 
-            <th class="border border-slate-300 px-6 py-3">Email</th>
-            <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
-            <td class="border border-slate-300 px-6 py-3">{{ $reqresource->user_email }}</td>
-
             <th class="border border-slate-300 px-6 py-3">Claim Date</th>
             <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
             <td class="border border-slate-300 px-6 py-3">{{ $reqresource->claim_date }}</td>

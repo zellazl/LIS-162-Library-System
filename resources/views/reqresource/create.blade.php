@@ -31,12 +31,6 @@
              <input type="string" name="user_fullname" id="" class="block w-full rounded-md border-0 pl-2 px-3 py-5 text-base font-mono font-medium text-yellow-900 shadow-sm ring-1 ring-inset ring-gray-300">
          </div>
 
-         <div class="col-span-full"></div>
-         <label for="user_email" class="block text-sm/6 font-mono font-medium italic text-yellow-900">Please leave your email for contact.</label>
-         <div class="mt-2">
-             <input type="string" name="user_email" id="" class="block w-full rounded-md border-0 pl-2 px-3 py-5 text-base font-mono font-medium text-yellow-900 shadow-sm ring-1 ring-inset ring-gray-300">
-         </div>
-
          <div class="col-span-full">
          <label for="claim_date" class="block text-sm/6 font-mono font-medium italic text-yellow-900">When would you like to claim your resource?</label>
          <div class="mt-2">

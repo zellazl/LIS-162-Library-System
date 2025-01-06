@@ -31,7 +31,6 @@ class ReqserviceController extends Controller
     {
         $reqserviceData = [
             'user_fullname' => $request->input('user_fullname'),
-            'user_email' => $request->input('user_email'),
             'service_date' => $request->input('service_date'),
             'time_slot' => $request->input('time_slot'),
             'service_name' => $request->input('service_name')
