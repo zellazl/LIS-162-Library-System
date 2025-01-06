@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-yellow-200">
-    <!-- Header -->
+
     <header class="services flex items-center space-x-4 pl-10 mt-4">
         <a href="/" class="flex-shrink-0">
             <img class="h-20 w-auto" src="{{ asset('images/logo_no.png') }}" alt="Logo">
@@ -22,7 +22,6 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <div class="py-5">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-10">
             <div class="relative bg-transparent overflow-hidden shadow-xl sm:rounded-lg">
@@ -58,7 +57,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="mt-20 text-center py-4 relative" style='background-color: #fddc58'>
         <p class="mt-16 text-sm font-bold">UP School of Library and Information Science Studies Library</p>
         <p class="mb-8 text-sm">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
