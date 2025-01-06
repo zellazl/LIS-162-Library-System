@@ -16,7 +16,6 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->string('user_fullname');
-            $table->string('user_email');
             $table->date('service_date');
             $table->string('time_slot');
             $table->string('service_name');

@@ -22,7 +22,6 @@
         <tr>
             <th class="border border-slate-300 px-6 py-3">Service Request ID</th>
             <th class="border border-slate-300 px-6 py-3">Full Name</th>
-            <th class="border border-slate-300 px-6 py-3">Email</th>
             <th class="border border-slate-300 px-6 py-3">Type of Service</th>
             <th class="border border-slate-300 px-6 py-3">Date of Service</th>
             <th class="border border-slate-300 px-6 py-3">Timeslot</th>
@@ -31,7 +30,6 @@
         <tr>
             <td class="border border-slate-300 px-4 py-1">{{ $reqservice->id }}</td>
             <td class="border border-slate-300 px-4 py-1">{{ $reqservice->user_fullname }}</td>
-            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->user_email }}</td>
             <td class="border border-slate-300 px-4 py-1">{{ $reqservice->service_name }}</td>
             <td class="border border-slate-300 px-4 py-1">{{ $reqservice->service_date }}</td>
             <td class="border border-slate-300 px-4 py-1">{{ $reqservice->time_slot }}</td>

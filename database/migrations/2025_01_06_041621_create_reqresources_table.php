@@ -16,7 +16,6 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->string('user_fullname');
-            $table->string('user_email');
             $table->date('claim_date');
             $table->string('resource_title');
             $table->string('resource_author');
