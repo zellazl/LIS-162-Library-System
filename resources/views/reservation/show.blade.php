@@ -105,7 +105,7 @@
     </div>
 </body>
 <footer class="bg-[#fddc58] text-center py-12 border-t border-[#e0e0e0]">
-        <p class="footer-text font-bold text-black">UP School of Library and Information Science Studies Library</p>
-        <p class="footer-location text-black">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
-    </footer>
+    <p class="footer-text font-bold text-black">UP School of Library and Information Science Studies Library</p>
+    <p class="footer-location text-black">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
+</footer>
 </html>
