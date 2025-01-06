@@ -21,7 +21,7 @@ class ReqresourceController extends Controller
      */
     public function create()
     {
-        //
+        return view ('reqresource.create');
     }
 
     /**
@@ -29,7 +29,17 @@ class ReqresourceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reqresourceData = [
+            'user_fullname' => $request->input('user_fullname'),
+            'user_email' => $request->input('user_email'),
+            'claim_date' => $request->input('claim_date'),
+            'resource_title' => $request->input('resource_title'),
+            'resource_author' => $request->input('resource_author'),
+            'resource_accession_number' => $request->input('resource_accession_number')
+        ];
+
+        Reqresource::create($reqresourceData);
+        return redirect()->route('reqresources.index');
     }
 
     /**
