@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReqserviceController;
+use App\Http\Controllers\ReqresourceController;
 
 Route::get('/', function () {
     return view('welcome');
