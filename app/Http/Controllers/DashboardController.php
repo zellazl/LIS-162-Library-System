@@ -24,6 +24,7 @@ class DashboardController extends Controller
     public function index()
     {
         $reqservices = Reqservice::get();
-        return view ('dashboard', compact ('reqservices'));
+        $reqresources = Reqresource::get();
+        return view ('dashboard', compact ('reqservices', 'reqresources'));
     }
 }
