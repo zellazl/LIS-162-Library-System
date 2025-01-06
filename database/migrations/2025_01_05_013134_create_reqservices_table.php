@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users'); 
             $table->unsignedBigInteger('user_id')->unsigned(); 
             $table->timestamps();
+            $table->softDeletes();
             $table->string('user_fullname');
             $table->date('service_date');
             $table->string('time_slot');
