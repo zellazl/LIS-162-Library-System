@@ -167,8 +167,6 @@
                     <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
                         <tr>
                             <th class="border border-slate-300 px-6 py-3">Resource Request ID</th>
-                            <th class="border border-slate-300 px-6 py-3">Full Name</th>
-                            <th class="border border-slate-300 px-6 py-3">Email</th>
                             <th class="border border-slate-300 px-6 py-3">Claim Date</th>
                             <th class="border border-slate-300 px-6 py-3">Title</th>
                             <th class="border border-slate-300 px-6 py-3">Author</th>
@@ -177,8 +175,6 @@
                         @foreach($reqresources as $reqresource)
                         <tr>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->id }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->user_fullname }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->user_email }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->claim_date }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_title }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_author }}</td>
