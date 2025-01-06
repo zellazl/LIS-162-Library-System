@@ -38,7 +38,7 @@ class ReqresourceController extends Controller
             'resource_accession_number' => $request->input('resource_accession_number')
         ];
 
-        $reqresource = Reqresource::create($reqsourceData);
+        $reqresource = Reqresource::create($reqresourceData);
         return redirect()->route('reqresources.show', $reqresource->id);
     }
 
@@ -48,7 +48,7 @@ class ReqresourceController extends Controller
     public function show(reqresource $reqresource)
     {
         $reqresource = Reqresource::findOrFail($reqresource->id);
-        return view('reqresources.show', compact('reqresource'));
+        return view('reqresource.show', compact('reqresource'));
     }
 
     /**
