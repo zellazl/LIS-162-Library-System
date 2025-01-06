@@ -70,84 +70,11 @@
         <div class="w-3/4 mt-12 mx-36">
             <p class="text-xl font-bold mb-4">Welcome back, {{ auth()->user()->name }}!</p>
             <h2 class="text-4xl font-bold mb-4 border-b-4 border-b-slate rounded-sm w-full">Dashboard</h2>
-            <fieldset>
-                <input id="reservations" class="peer/reservations" type="radio" name="status" checked />
-                <label for="reservations" class="peer-checked/reservations:text-amber-800 mr-4">Reservations</label>
-              
-                <input id="facilityreq" class="peer/facilityreq" type="radio" name="status" />
-                <label for="facilityreq" class="peer-checked/facilityreq:text-amber-800 mr-4">Services</label>
-
-                <input id="resourcereq" class="peer/resourcereq" type="radio" name="status" />
-                <label for="resourcereq" class="peer-checked/resourcereq:text-amber-800 mr-4">Resource</label>
-              
-                <div class="hidden peer-checked/reservations:block">
-                    <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
-                        <tr>
-                            <th class="border border-slate-300 px-6 py-3">User ID</th>
-                            <th class="border border-slate-300 px-6 py-3">EMAIL</th>
-                            <th class="border border-slate-300 px-6 py-3">FACILITY</th>
-                            <th class="border border-slate-300 px-6 py-3">FROM</th>
-                            <th class="border border-slate-300 px-6 py-3">UNTIL</th>
-                            <th class="border border-slate-300 px-6 py-3">RESERVATION DATE</th>
-                            <th class="border border-slate-300 px-6 py-3">ORDER DATE</th>
-                        </tr>
-                        @foreach($reservations as $reservation)
-                        <tr>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reservation->user->id }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reservation->user->email }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reservation->facility }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reservation->from }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reservation->until }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reservation->reservation_date }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reservation->created_at }}</td>
-                        </tr>
-                        @endforeach
-                    </table>
-                </div>
-                <div class="hidden peer-checked/facilityreq:block">
-                    <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
-                        <tr>
-                            <th class="border border-slate-300 px-6 py-3">Service Request ID</th>
-                            <th class="border border-slate-300 px-6 py-3">Type of Service</th>
-                            <th class="border border-slate-300 px-6 py-3">Date of Service</th>
-                            <th class="border border-slate-300 px-6 py-3">Timeslot</th>
-                        </tr>
-                        @foreach($reqservices as $reqservice)
-                        <tr>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->id }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->service_name }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->service_date }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->time_slot }}</td>
-                        </tr>
-                        @endforeach
-                    </table>
-                </div>
-                <div class="hidden peer-checked/resourcereq:block">
-                    <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
-                        <tr>
-                            <th class="border border-slate-300 px-6 py-3">Resource Request ID</th>
-                            <th class="border border-slate-300 px-6 py-3">Claim Date</th>
-                            <th class="border border-slate-300 px-6 py-3">Title</th>
-                            <th class="border border-slate-300 px-6 py-3">Author</th>
-                            <th class="border border-slate-300 px-6 py-3">Accession Number</th>
-                        </tr>
-                        @foreach($reqresources as $reqresource)
-                        <tr>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->id }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->claim_date }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_title }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_author }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_accession_number }}</td>
-                        </tr>
-                        @endforeach
-                    </table>
-                </div>
-            </fieldset>
         </div>
     </body>
     <!-- Footer -->
-    <img src="images/gabi_no.png" alt="Mascot" class="absolute left-1/2 transform -translate-x-1/2 w-auto h-80"> 
-    <footer class="mt-20 text-center py-4 relative absolute -bottom-24" style='background-color: #fddc58'>
+    <img src="images/gabi_no.png" alt="Mascot" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-auto h-80"> 
+    <footer class="mt-20 text-center py-4 relative absolute -bottom-36" style='background-color: #fddc58'>
         <p class="mt-16 text-sm font-bold">UP School of Library and Information Science Studies Library</p>
         <p class="mb-8 text-sm">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
     </footer>
