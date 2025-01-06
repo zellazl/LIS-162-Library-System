@@ -20,6 +20,7 @@
     
     <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
         <tr>
+            <th class="border border-slate-300 px-6 py-3">User ID</th>
             <th class="border border-slate-300 px-6 py-3">EMAIL</th>
             <th class="border border-slate-300 px-6 py-3">FACILITY</th>
             <th class="border border-slate-300 px-6 py-3">FROM</th>
@@ -29,6 +30,7 @@
          </tr>
         @foreach($reservations as $reservation)
         <tr>
+            <td class="border border-slate-300 px-4 py-1">{{ $reservation->user->id }}</td>
             <td class="border border-slate-300 px-4 py-1">{{ $reservation->user->email }}</td>
             <td class="border border-slate-300 px-4 py-1">{{ $reservation->facility }}</td>
             <td class="border border-slate-300 px-4 py-1">{{ $reservation->from }}</td>

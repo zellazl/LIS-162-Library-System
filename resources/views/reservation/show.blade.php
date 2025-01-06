@@ -20,6 +20,10 @@
     
     <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
         <tr>
+            <th class="border border-slate-300 px-6 py-3">User ID</th>
+            <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
+            <td class="border border-slate-300 px-6 py-3">{{ $reservation->id }}</td>
+
             <th class="border border-slate-300 px-6 py-3">User Email</th>
             <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
             <td class="border border-slate-300 px-6 py-3">{{ $reservation->user->email }}</td>
