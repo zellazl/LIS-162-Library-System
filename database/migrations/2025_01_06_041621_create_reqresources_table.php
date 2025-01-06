@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('claim_date');
             $table->string('resource_title');
             $table->string('resource_author');
-            $table->string('resource_accession number');
+            $table->string('resource_accession_number');
         });
     }
 
