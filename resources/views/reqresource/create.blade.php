@@ -89,7 +89,7 @@
     </div>
 
     <div class="text-center mt-5">
-        <a href="/collections" class="text-xl font-bold text-yellow-900 hover:text-yellow-600">Go to Collections</a>
+        <a href="/collection" class="text-xl font-bold text-yellow-900 hover:text-yellow-600">Go to Collections</a>
     </div>
 
     <footer class="mt-20 text-center py-4 relative" style='background-color: #fddc58'>
