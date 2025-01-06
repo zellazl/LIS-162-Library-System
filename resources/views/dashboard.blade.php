@@ -43,10 +43,10 @@
                                 <a href= "{{ route('profile.show') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Profile</a>
                             </li>
                             <li>
-                                <a href="/reservations" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Reservations</a>
+                                <a href="" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Reservations</a>
                             </li>
                             <li>
-                                <a href="/requests" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Requests</a>
+                                <a href="{{ route('reqservices.create') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Requests</a>
                             </li>
                         </ul>
                         <div class="py-2">
@@ -139,39 +139,21 @@
                     </table>
                 </div>
                 <div class="hidden peer-checked/requests:block">
-                    <table>
-                        <thead class="bg-amber-200">
-                            <tr>
-                                <th>ID</th>
-                                <th>Date</th>
-                                <th>Title</th>
-                                <th>Checkout Date</th>
-                                <th>Due</th>
-                            </tr>
-                        </thead>
-                        <tbody>                           
-                            <tr class="h-10 odd:bg-white even:bg-amber-100">
-                                <td>1</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="h-10 odd:bg-white even:bg-amber-100">
-                                <td>2</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                        </tbody>
+                    <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
+                        <tr>
+                            <th class="border border-slate-300 px-6 py-3">Service Request ID</th>
+                            <th class="border border-slate-300 px-6 py-3">Type of Service</th>
+                            <th class="border border-slate-300 px-6 py-3">Date of Service</th>
+                            <th class="border border-slate-300 px-6 py-3">Timeslot</th>
+                        </tr>
+                        @foreach($reqservices as $reqservice)
+                        <tr>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->id }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->service_name }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->service_date }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->time_slot }}</td>
+                        </tr>
+                        @endforeach
                     </table>
                 </div>
             </fieldset>

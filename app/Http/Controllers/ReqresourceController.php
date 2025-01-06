@@ -38,9 +38,6 @@ class ReqresourceController extends Controller
             'resource_accession_number' => $request->input('resource_accession_number')
         ];
 
-        Reqresource::create($reqresourceData);
-        return redirect()->route('reqresources.index');
-
         $reqresource = Reqresource::create($reqsourceData);
         return redirect()->route('reqresources.show', $reqresource->id);
     }
