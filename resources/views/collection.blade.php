@@ -30,7 +30,7 @@
         align-items: center;
     }  
 </style>
-<header class="collections">
+<header class="flex items-center mx-12 mt-8 mb-32">
     <a href="/"><img class="h-20 w-auto mr-2" src="images/logo_no.png" alt="Logo"></a>
     <div>            
         <a href="/" class="text-xl font-bold text-amber-800">UP SLIS LIBRARY<br></a>
@@ -62,7 +62,7 @@
 <body>
 <section class="container mx-auto">
     <a href="https://tuklas.up.edu.ph/Search/Results?filter%5B%5D=institution%3A%22Diliman%22&filter%5B%5D=building%3A%22School+of+Library+and+Information+Studies%22&filter%5B%5D=format%3A%22Book%22&type=AllFields" class="relative w-auto">
-        <img src="images/book.jpeg" alt="Book" class="block mx-auto m-3.5 rounded-2xl w-full max-h-40 object-cover overflow-hidden"/>
+        <img src="images/book.jpeg" alt="Book" class="relative mx-auto m-3.5 rounded-2xl w-full max-h-40 object-cover overflow-hidden"/>
         <h3 class="w-full absolute inset-y-16 font-bold text-2xl text-white text-center">Book</h3>
     </a>
     <a href="https://tuklas.up.edu.ph/Search/Results?filter%5B%5D=institution%3A%22Diliman%22&filter%5B%5D=building%3A%22School+of+Library+and+Information+Studies%22&filter%5B%5D=format%3A%22Thesis%22&type=AllFields" class="relative w-auto">
