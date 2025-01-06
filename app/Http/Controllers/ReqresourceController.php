@@ -40,6 +40,9 @@ class ReqresourceController extends Controller
 
         Reqresource::create($reqresourceData);
         return redirect()->route('reqresources.index');
+
+        $reqresource = Reqresource::create($reqsourceData);
+        return redirect()->route('reqresources.show', $reqresource->id);
     }
 
     /**
@@ -47,7 +50,8 @@ class ReqresourceController extends Controller
      */
     public function show(reqresource $reqresource)
     {
-        //
+        $reqresource = Reqresource::findOrFail($reqresource->id);
+        return view('reqresources.show', compact('reqresource'));
     }
 
     /**
