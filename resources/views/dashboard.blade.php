@@ -46,7 +46,7 @@
                                 <a href="" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Reservations</a>
                             </li>
                             <li>
-                                <a href="{{ route('reqservices.create') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Facility Requests</a>
+                                <a href="{{ route('reqservices.create') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Service Requests</a>
                             </li>
                             <li>
                                 <a href="{{ route('reqresources.create') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Resource Requests</a>
@@ -75,7 +75,7 @@
                 <label for="reservations" class="peer-checked/reservations:text-amber-800 mr-4">Reservations</label>
               
                 <input id="facilityreq" class="peer/facilityreq" type="radio" name="status" />
-                <label for="facilityreq" class="peer-checked/facilityreq:text-amber-800 mr-4">Facility</label>
+                <label for="facilityreq" class="peer-checked/facilityreq:text-amber-800 mr-4">Services</label>
 
                 <input id="resourcereq" class="peer/resourcereq" type="radio" name="status" />
                 <label for="resourcereq" class="peer-checked/resourcereq:text-amber-800 mr-4">Resource</label>
