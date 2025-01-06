@@ -10,10 +10,13 @@ class ReqserviceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $reqservices = Reqservice::get();
-        return view ('reqservice.index', compact ('reqservices'));
+
+        $userEmail = $request->user()->email;
+        
+        return view ('reqservice.index', compact ('reqservices', 'userEmail'));
     }
 
     /**
