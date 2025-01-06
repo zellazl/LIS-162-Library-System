@@ -81,63 +81,22 @@
                         <thead class="bg-amber-200">
                             <tr>
                                 <th>ID</th>
-                                <th>Date</th>
+                                <th>Email</th>
                                 <th>Facility</th>
+                                <th>Time Slot </th>
                                 <th>Reservation Date</th>
-                                <th>Status</th>
+                                <th>Order Date</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="odd:bg-white even:bg-amber-100">
-                                <td>1</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
+                            <td>{{ $reservation->id }}</td>
+                            <td>{{ $reservation->user->email }}</td>
+                            <td>{{ $reservation->facility }}</td>
+                            <td>{{ $reservation->from }}-{{ $reservation->until }}</td>
+                            <td>{{ $reservation->reservation_date }}</td>
+                            <td>{{ $reservation->created_at }}</td>
                             </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>2</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-            
                         </tbody>
                     </table>
                 </div>

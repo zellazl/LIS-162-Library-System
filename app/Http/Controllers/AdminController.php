@@ -11,10 +11,11 @@ class AdminController extends Controller
     {
         // Fetch all reqservices and reqresources from the database
         $reqservices = Reqservice::all();
+        $reservations = Reservation::all();
         //$reqResources = ReqResource::all();
 
         // Pass the data to the admin view
         //return view('admin.dashboard', compact('reqServices', 'reqResources'));
-        return view('admin.dashboard', compact('reqservices'));
+        return view('admin.dashboard', compact('reqservices', 'reservations'));
     }
 }
