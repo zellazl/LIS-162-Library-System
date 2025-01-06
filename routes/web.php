@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReqserviceController;
 use App\Http\Controllers\ReqresourceController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StatisticsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,6 +37,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     //Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); 
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard'); });
+
+//statistics    
+Route::middleware(['auth:sanctum', 'verified'])->group(function () { 
+    Route::get('/admin/statistics', [StatisticsController::class, 'index'])->name('admin.statistics'); 
+});    
 
 //Login so admin will be redirected sa /admin/dashboard
 Route::post('/login', function (Request $request) {
