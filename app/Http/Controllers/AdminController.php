@@ -22,11 +22,20 @@ class AdminController extends Controller
     
      public function destroy(string $id)
     {
-        $delRecord = Reqservice::findOrFail($id);
-        $delRecord = Reqresource::findOrFail($id);
-        $delRecord = Reservation::findOrFail($id);
-        $delRecord->delete();
-        
-        return redirect()->route('admins.index');
+        $reqservice = Reqservice::find($id);
+    if ($reqservice) {
+        $reqservice->delete();
+    }
+
+    $reqresource = Reqresource::find($id);
+    if ($reqresource) {
+        $reqresource->delete();
+    }
+
+    $reservation = Reservation::find($id);
+    if ($reservation) {
+        $reservation->delete();
+    }   
+        return redirect()->route('admin.dashboard', compact('reqservices', 'reqresources', 'reservation'));
     }
 }
