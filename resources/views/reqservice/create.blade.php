@@ -119,32 +119,14 @@
 </head>
 
 <body>
-    <header class="services flex items-center space-x-4 pl-10">
+    <header class="services flex items-center space-x-4 pl-10 mt-4">
         <a href="/" class="flex-shrink-0">
             <img class="h-20 w-auto" src="{{ asset('images/logo_no.png') }}" alt="Logo">
         </a>
         <div>
             <a href="/" class="text-xl font-bold text-amber-800">UP SLIS LIBRARY</a>
             <nav class="flex space-x-8 mt-2 text-sm font-bold">
-                <a href="/" class="hover:text-amber-600">Home</a>
-                <a href="/about_us" class="hover:text-amber-600">About Us</a>
-                <a href="/contact_us" class="hover:text-amber-600">Contact Us</a>
-                <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm font-bold text-gray-900 rounded-full hover:text-blue-600 dark:hover:text-amber-600 md:me-0 dark:text-black" type="button">
-                    <span class="hover:text-amber-600">Services</span>
-                </button>
-                <div id="dropdownAvatarName" class="hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-white dark:divide-gray">
-                    <ul class="py-2 text-sm text-black dark:text-black" aria-labelledby="dropdownUserAvatarNameButton">
-                        <li>
-                            <a href="/services" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Services</a>
-                        </li>
-                        <li>
-                            <a href="/collection" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Collection</a>
-                        </li>
-                        <li>
-                            <a href="/resources" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Resources</a>
-                        </li>
-                    </ul>
-                </div>
+                <a href="/dashboard" class="hover:text-amber-600">Dashboard</a>
             </nav>
         </div>
     </header>
@@ -188,10 +170,7 @@
                 </select>
             </div>
 
-            <div class="input-group">
-                <label for="user_email">Your Email</label>
-                <input type="email" name="user_email" id="user_email" required>
-            </div>
+            
 
             <div class="absolute bottom-24 right-80">
                 <button type=submit class="submit-btn">Submit</button>
