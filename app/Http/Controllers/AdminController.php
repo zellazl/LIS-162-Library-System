@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reqservice;
 use App\Models\Reqresource;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
