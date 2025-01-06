@@ -37,8 +37,9 @@ class ReqserviceController extends Controller
             'service_name' => $request->input('service_name')
         ];
 
-        Reqservice::create($reqserviceData);
-        return redirect()->route('reqservices.index');
+        $requestsdata = Reqservice::create($reqserviceData);
+        return redirect()->route('reqservices.show', $requestsData->id);
+
     }
 
     /**
@@ -48,8 +49,8 @@ class ReqserviceController extends Controller
     {
         $reqservice = Reqservice::findOrFail($reqservice->id);
         return view('reqservice.show', compact('reqservice'));
-      
     }
+      
 
     /**
      * Show the form for editing the specified resource.
