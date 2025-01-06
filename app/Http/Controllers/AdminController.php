@@ -18,4 +18,12 @@ class AdminController extends Controller
         //return view('admin.dashboard', compact('reqServices', 'reqResources'));
         return view('admin.dashboard', compact('reqservices', 'reservations'));
     }
+
+    public function destroy(string $id)
+    {
+        $delRecord = Reservation::findOrFail($id);
+        $delRecord->delete();
+        
+        return redirect()->route('admins.index');
+    }
 }

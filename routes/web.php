@@ -5,8 +5,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReqserviceController;
+use App\Http\Controllers\ReqresourceController;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\ReservationController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -52,8 +53,10 @@ Route::post('/login', function (Request $request) {
 
 
 
-    Route::resource('reservations', reservationController::class);
+
 // Request-Services route, user view 
     Route::resource('reqservices', ReqserviceController::class);
+    Route::resource('reservations', ReservationController::class);
+    Route::resource('reqresources', ReqresourceController::class);
 
 

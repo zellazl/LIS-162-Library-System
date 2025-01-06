@@ -30,13 +30,15 @@ class ReqserviceController extends Controller
     public function store(Request $request)
     {
         $reqserviceData = [
+            'user_fullname' => $request->input('user_fullname'),
+            'user_email' => $request->input('user_email'),
             'service_date' => $request->input('service_date'),
             'time_slot' => $request->input('time_slot'),
             'service_name' => $request->input('service_name')
         ];
 
-        Reqservice::create($reqserviceData);
-        return redirect()->route('reqservices.index');
+        $reqservice = Reqservice::create($reqserviceData);
+        return redirect()->route('reqservices.show', $reqservice->id);
     }
 
     /**
@@ -46,8 +48,8 @@ class ReqserviceController extends Controller
     {
         $reqservice = Reqservice::findOrFail($reqservice->id);
         return view('reqservice.show', compact('reqservice'));
-      
     }
+      
 
     /**
      * Show the form for editing the specified resource.

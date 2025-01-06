@@ -96,7 +96,15 @@
                             <td>{{ $reservation->from }}-{{ $reservation->until }}</td>
                             <td>{{ $reservation->reservation_date }}</td>
                             <td>{{ $reservation->created_at }}</td>
+                            <td>
+                                <form action="{{ route('admins.destroy', $reservation->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                                </form>
+                            </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

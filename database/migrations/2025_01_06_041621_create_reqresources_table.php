@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reqservices', function (Blueprint $table) {
+        Schema::create('reqresources', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->softDeletes();
             $table->string('user_fullname');
             $table->string('user_email');
-            $table->date('service_date');
-            $table->string('time_slot');
-            $table->string('service_name');
+            $table->date('claim_date');
+            $table->string('resource_title');
+            $table->string('resource_author');
+            $table->string('resource_accession_number');
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reqservices');
+        Schema::dropIfExists('reqresources');
     }
 };
