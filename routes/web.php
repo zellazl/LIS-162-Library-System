@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReqserviceController;
+use App\Http\Controllers\ReqresourceController;
 use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
@@ -54,7 +55,7 @@ Route::post('/login', function (Request $request) {
     Route::get('/reqservices/{reqservice}', [ReqserviceController::class, 'show'])->name('reqservices.show');  
 
     Route::resource('reqresources', Reqresourcecontroller::class);
-    Route::get('/reqresources/{reqresource}', [Reqsresourceontroller::class, 'show'])->name('reqresources.show');
+    Route::get('/reqresources/{reqresource}', [Reqresourcecontroller::class, 'show'])->name('reqresources.show');
 
     
     
