@@ -7,7 +7,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReqserviceController;
 use App\Http\Controllers\AdminController;
 
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -50,10 +49,14 @@ Route::post('/login', function (Request $request) {
     return back()->withErrors(['email' => 'Invalid credentials.']);
 });
 
+    // reqservice & resource routes para sa show kineme
+    Route::resource('reqservices', Reqservicecontroller::class);
+    Route::get('/reqservices/{reqservice}', [ReqserviceController::class, 'show'])->name('reqservices.show');  
 
+    Route::resource('reqresources', Reqresourcecontroller::class);
+    Route::get('/reqresources/{reqresource}', [Reqsresourceontroller::class, 'show'])->name('reqresources.show');
 
-
-// Request-Services route, user view 
-    Route::resource('reqservices', ReqserviceController::class);
+    
+    
 
 
