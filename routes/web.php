@@ -52,7 +52,7 @@ Route::post('/login', function (Request $request) {
 
 
 
-
+    Route::resource('reservations', reservationController::class);
 // Request-Services route, user view 
     Route::resource('reqservices', ReqserviceController::class);
 
