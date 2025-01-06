@@ -54,7 +54,7 @@ Route::post('/login', function (Request $request) {
     Route::get('/reqservices/{reqservice}', [ReqserviceController::class, 'show'])->name('reqservices.show');  
 
     Route::resource('reqresources', Reqresourcecontroller::class);
-    Route::get('/reqresources/{reqresource}', [ReqserviceController::class, 'show'])->name('reqresources.show');
+    Route::get('/reqresources/{reqresource}', [Reqsresourceontroller::class, 'show'])->name('reqresources.show');
 
     
     
