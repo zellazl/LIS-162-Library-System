@@ -47,7 +47,6 @@
 </head>
 
 <body>
-    <!-- Header -->
     <header class="services flex items-center space-x-4 pl-10 bg-[#fddc58] border-b border-[#e0e0e0]">
         <div>
             <h1 class="text-xl font-bold text-black">Services</h1>
@@ -71,12 +70,11 @@
         </div>
     </header>
 
-    <!-- Content -->
     <div class="py-5">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-10">
             <div class="relative bg-transparent overflow-hidden shadow-x1 sm:rounded lg">
                 <div class="px-5 lg:p-8 bg-white border-b border-gray-200">
-                    <h1 class="mt-3 mb-5 text-2x1 font-bold text-black">Receipt</h1>
+                    <h1 class="mt-3 mb-5 text-2xl font-bold text-black">Receipt</h1>
 
                     <table class="mt-6 text-black leading-relaxed">
                         <tr>
@@ -114,25 +112,21 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="bg-[#fddc58] text-center py-5 border-t border-[#e0e0e0]">
         <p class="footer-text font-bold text-black">UP School of Library and Information Science Studies Library</p>
         <p class="footer-location text-black">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
     </footer>
 
-    <!-- Dropdown Menu Script -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const dropdownButton = document.getElementById('dropdownAvatarNameButton');
             const dropdownMenu = document.getElementById('dropdownAvatarName');
 
-            // Toggle the dropdown visibility
             dropdownButton.addEventListener('click', function (event) {
-                event.stopPropagation(); // Prevent click event from propagating to window
+                event.stopPropagation(); 
                 dropdownMenu.classList.toggle('hidden');
             });
 
-            // Close dropdown when clicking outside
             window.addEventListener('click', function (event) {
                 if (!dropdownMenu.contains(event.target) && !dropdownButton.contains(event.target)) {
                     dropdownMenu.classList.add('hidden');

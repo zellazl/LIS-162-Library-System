@@ -163,18 +163,15 @@
         <p class="mb-8 text-sm">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
     </footer>
 
-    <!-- Flowbite Dropdown JS -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const dropdownButton = document.getElementById('dropdownAvatarNameButton');
             const dropdownMenu = document.getElementById('dropdownAvatarName');
 
             dropdownButton.addEventListener('click', function () {
-                // Toggle the visibility of the dropdown
                 dropdownMenu.classList.toggle('hidden');
             });
 
-            // Close dropdown when clicking outside
             window.addEventListener('click', function (e) {
                 if (!dropdownButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
                     dropdownMenu.classList.add('hidden');

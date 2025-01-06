@@ -6,19 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 
-class reqresource extends Model
+class Reservation extends Model
 {
     use SoftDeletes;
-    
-    protected $fillable = ['id', 'created_at', 'updated_at', 'deleted_at', 'user_fullname', 'claim_date', 'resource_title', 'resource_author', 'resource_accession_number'];
+
+    protected $fillable = [
+        'facility', 'reservation_date', 'from', 'until'
+    ];
 
     protected static function boot()
     {
         parent::boot(); 
     
-        static::creating(function ($reqresource) {
-            if (empty($reqresource->user_id)) {
-                $reqresource->user_id = Auth::id();
+        static::creating(function ($reservation) {
+            if (empty($reservation->user_id)) {
+                $reservation->user_id = Auth::id();
             }
         });
     }

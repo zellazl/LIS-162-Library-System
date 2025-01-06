@@ -11,18 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reqresources', function (Blueprint $table) {
+        Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->foreign('user_id')->references('id')->on('users'); 
             $table->unsignedBigInteger('user_id')->unsigned(); 
             $table->timestamps();
+            $table->string('facility');
+            $table->date('reservation_date');
+            $table->string('from');
+            $table->string('until');
             $table->softDeletes();
-            $table->string('user_fullname');
-            $table->date('claim_date');
-            $table->string('resource_title');
-            $table->string('resource_author');
-            $table->string('resource_accession_number');
-            $table->string('transaction_status');
         });
     }
 
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reqresources');
+        Schema::dropIfExists('reservations');
     }
 };

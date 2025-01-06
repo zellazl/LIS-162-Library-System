@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/logo_no.png">
+    <link rel="icon" href="{{ asset('images/logo_no.png') }}">
     <title>Service Request</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
@@ -120,8 +120,8 @@
 
 <body>
     <header class="services flex items-center space-x-4 pl-10">
-        <a href="/home" class="flex-shrink-0">
-            <img class="h-20 w-auto" src="images/logo_no.png" alt="Logo">
+        <a href="/" class="flex-shrink-0">
+            <img class="h-20 w-auto" src="{{ asset('images/logo_no.png') }}" alt="Logo">
         </a>
         <div>
             <a href="/" class="text-xl font-bold text-amber-800">UP SLIS LIBRARY</a>
@@ -151,6 +151,7 @@
 
     <div class="container">
         <form action="{{ route('reqservices.index') }}" method="post" class="form-section">
+            @csrf
             <div class="input-group">
                 <label for="user_fullname">Your Name (LAST NAME, Given MI.)</label>
                 <input type="text" name="user_fullname" id="user_fullname" required>
@@ -163,7 +164,7 @@
 
             <div class="input-group">
                 <label for="time_slot">Appointment Time</label>
-                <select name="time_slot" id="time_slot" required>
+                <select type="string" name="time_slot" id="time_slot" required>
                     <option value="8-9AM">8:00 - 9:00 AM</option>
                     <option value="9-10AM">9:00 - 10:00 AM</option>
                     <option value="10-11AM">10:00 - 11:00 AM</option>
@@ -177,7 +178,7 @@
 
             <div class="input-group">
                 <label for="service_name">Service to Avail</label>
-                <select name="service_name" id="service_name" required>
+                <select type="string" name="service_name" id="service_name" required>
                     <option value="Library Orientation">Library Orientation</option>
                     <option value="Term Paper and Research Counseling">Term Paper and Research Counselling</option>
                     <option value="Reader Advisory">Reader Advisory</option>
@@ -191,14 +192,17 @@
                 <label for="user_email">Your Email</label>
                 <input type="email" name="user_email" id="user_email" required>
             </div>
+
+            <div class="absolute bottom-24 right-80">
+                <button type=submit class="submit-btn">Submit</button>
+            </div>
         </form>
 
         <div class="carousel-section">
             <div class="carousel-placeholder">
-                <img src="images/gabi_no.png" alt="Services Description">
+                <img src="{{ asset('images/gabi_no.png') }}" alt="Services Description">
                 <a href="/services">Services Description</a>
             </div>
-            <button class="submit-btn">Submit</button>
         </div>
     </div>
 
