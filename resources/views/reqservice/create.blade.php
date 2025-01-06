@@ -188,10 +188,7 @@
                 </select>
             </div>
 
-            <div class="input-group">
-                <label for="user_email">Your Email</label>
-                <input type="email" name="user_email" id="user_email" required>
-            </div>
+            
 
             <div class="absolute bottom-24 right-80">
                 <button type=submit class="submit-btn">Submit</button>
