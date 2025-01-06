@@ -87,24 +87,25 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Email</th>
-                                <th>Facility</th>
-                                <th>Time Slot </th>
-                                <th>Reservation Date</th>
-                                <th>Order Date</th>
+                                <th class="border border-slate-300 px-6 py-3">ID</th>
+                                <th class="border border-slate-300 px-6 py-3">Email</th>
+                                <th class="border border-slate-300 px-6 py-3">Facility</th>
+                                <th class="border border-slate-300 px-6 py-3">Time Slot </th>
+                                <th class="border border-slate-300 px-6 py-3">Reservation Date</th>
+                                <th class="border border-slate-300 px-6 py-3">Order Date</th>
+                                <th class="border border-slate-300 px-6 py-3">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($reservations as $reservation)
-                                <tr class="odd:bg-white even:bg-amber-100">
-                                <td>{{ $reservation->id }}</td>
-                                <td>{{ $reservation->user->email }}</td>
-                                <td>{{ $reservation->facility }}</td>
-                                <td>{{ $reservation->from }}-{{ $reservation->until }}</td>
-                                <td>{{ $reservation->reservation_date }}</td>
-                                <td>{{ $reservation->created_at }}</td>
-                                <td>
+                                <tr>
+                                <td class="border border-slate-300 px-4 py-1">{{ $reservation->id }}</td>
+                                <td class="border border-slate-300 px-4 py-1">{{ $reservation->user->email }}</td>
+                                <td class="border border-slate-300 px-4 py-1">{{ $reservation->facility }}</td>
+                                <td class="border border-slate-300 px-4 py-1">{{ $reservation->from }}-{{ $reservation->until }}</td>
+                                <td class="border border-slate-300 px-4 py-1">{{ $reservation->reservation_date }}</td>
+                                <td class="border border-slate-300 px-4 py-1">{{ $reservation->created_at }}</td>
+                                <td class="border border-slate-300 px-4 py-1">
                                     <form action="{{ route('reservations.destroy', ['reservation'=>$reservation->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -125,6 +126,7 @@
                             <th class="border border-slate-300 px-6 py-3">Date of Service</th>
                             <th class="border border-slate-300 px-6 py-3">Timeslot</th>
                             <th class="border border-slate-300 px-6 py-3">Order Date</th>
+                            <th class="border border-slate-300 px-6 py-3">Action</th>
                         </tr>
                         @foreach($reqservices as $reqservice)
                         <tr>
@@ -134,7 +136,7 @@
                             <td class="border border-slate-300 px-4 py-1">{{ $reqservice->service_date }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqservice->time_slot }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqservice->created_at }}</td>
-                            <td>
+                            <td class="border border-slate-300 px-4 py-1">
                                  <form action="{{ route('reqservices.destroy', $reqservice->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
@@ -155,6 +157,7 @@
                             <th class="border border-slate-300 px-6 py-3">Author</th>
                             <th class="border border-slate-300 px-6 py-3">Accession Number</th>
                             <th class="border border-slate-300 px-6 py-3">Order Date</th>
+                            <th class="border border-slate-300 px-6 py-3">Action</th>
                         </tr>
                         @foreach($reqresources as $reqresource)
                         <tr>
@@ -165,7 +168,7 @@
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_author }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_accession_number }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->created_at }}</td>
-                            <td>
+                            <td class="border border-slate-300 px-4 py-1">
                                 <form action="{{ route('reqresources.destroy', $reqresource->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
