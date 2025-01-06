@@ -33,7 +33,8 @@ Route::get('/resources', function () {
 });
 //Users
 Route::middleware(['auth:sanctum', 'verified'])->group(function () { 
-    Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard'); 
+    //Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); 
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard'); });
 
 //Login so admin will be redirected sa /admin/dashboard
