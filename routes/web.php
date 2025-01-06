@@ -40,6 +40,8 @@ Route::middleware([
     Route::resource('reqservices', Reqservicecontroller::class);
     Route::get('/reqservices/{reqservice}', [ReqserviceController::class, 'show'])->name('reqservices.show');  
 
+    Route::resource('reqresources', Reqresourcecontroller::class);
+
     
     
 
