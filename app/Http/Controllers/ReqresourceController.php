@@ -31,7 +31,6 @@ class ReqresourceController extends Controller
     {
         $reqresourceData = [
             'user_fullname' => $request->input('user_fullname'),
-            'user_email' => $request->input('user_email'),
             'claim_date' => $request->input('claim_date'),
             'resource_title' => $request->input('resource_title'),
             'resource_author' => $request->input('resource_author'),

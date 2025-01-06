@@ -88,63 +88,30 @@
                         <thead class="bg-amber-200">
                             <tr>
                                 <th>ID</th>
-                                <th>Date</th>
+                                <th>Email</th>
                                 <th>Facility</th>
+                                <th>Time Slot </th>
                                 <th>Reservation Date</th>
-                                <th>Status</th>
+                                <th>Order Date</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="odd:bg-white even:bg-amber-100">
-                                <td>1</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
+                            <td>{{ $reservation->id }}</td>
+                            <td>{{ $reservation->user->email }}</td>
+                            <td>{{ $reservation->facility }}</td>
+                            <td>{{ $reservation->from }}-{{ $reservation->until }}</td>
+                            <td>{{ $reservation->reservation_date }}</td>
+                            <td>{{ $reservation->created_at }}</td>
+                            <td>
+                                <form action="{{ route('admins.destroy', $reservation->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                                </form>
+                            </td>
                             </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>2</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-            
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -204,6 +171,30 @@
                                 <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
                                 </form>
                             </td>
+                        </tr>
+                        @endforeach
+                    </table>
+                </div>
+                <div class="hidden peer-checked/resourcereq:block">
+                    <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
+                        <tr>
+                            <th class="border border-slate-300 px-6 py-3">Resource Request ID</th>
+                            <th class="border border-slate-300 px-6 py-3">Full Name</th>
+                            <th class="border border-slate-300 px-6 py-3">Email</th>
+                            <th class="border border-slate-300 px-6 py-3">Claim Date</th>
+                            <th class="border border-slate-300 px-6 py-3">Title</th>
+                            <th class="border border-slate-300 px-6 py-3">Author</th>
+                            <th class="border border-slate-300 px-6 py-3">Accession Number</th>
+                        </tr>
+                        @foreach($reqresources as $reqresource)
+                        <tr>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->id }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->user_fullname }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->user_email }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->claim_date }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_title }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_author }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_accession_number }}</td>
                         </tr>
                         @endforeach
                     </table>

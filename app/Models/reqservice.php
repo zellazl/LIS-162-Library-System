@@ -10,7 +10,7 @@ class reqservice extends Model
 {
     use SoftDeletes;
     
-    protected $fillable = ['id', 'created_at', 'updated_at', 'deleted_at', 'user_fullname', 'user_email', 'service_date', 'time_slot', 'service_name'];
+    protected $fillable = ['id', 'created_at', 'updated_at', 'deleted_at', 'user_fullname', 'service_date', 'time_slot', 'service_name'];
 
     protected static function boot()
     {
