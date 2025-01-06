@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reqservice;
+use App\Models\Reqresource;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -11,12 +12,12 @@ class AdminController extends Controller
     {
         // Fetch all reqservices and reqresources from the database
         $reqservices = Reqservice::all();
-        $reservations = Reservation::all();
+        $reservation = Reservation::all();
         //$reqResources = ReqResource::all();
 
         // Pass the data to the admin view
         //return view('admin.dashboard', compact('reqServices', 'reqResources'));
-        return view('admin.dashboard', compact('reqservices', 'reservations'));
+        return view('admin.dashboard', compact('reqservices', 'reservation'));
     }
 
     public function destroy(string $id)
