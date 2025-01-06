@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('resource_title');
             $table->string('resource_author');
             $table->string('resource_accession_number');
-            $table->string('transaction_status');
+            $table->string('transaction_status')->nullable();
         });
     }
 

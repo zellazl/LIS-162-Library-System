@@ -81,68 +81,27 @@
                 <label for="resourcereq" class="peer-checked/resourcereq:text-amber-800 mr-4">Resource</label>
               
                 <div class="hidden peer-checked/reservations:block">
-                    <table>
-                        <thead class="bg-amber-200">
-                            <tr>
-                                <th>ID</th>
-                                <th>Date</th>
-                                <th>Facility</th>
-                                <th>Reservation Date</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>1</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>2</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                                <td>3</td>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td>Confirm</td>
-                            </tr>
-            
-                        </tbody>
+                    <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
+                        <tr>
+                            <th class="border border-slate-300 px-6 py-3">User ID</th>
+                            <th class="border border-slate-300 px-6 py-3">EMAIL</th>
+                            <th class="border border-slate-300 px-6 py-3">FACILITY</th>
+                            <th class="border border-slate-300 px-6 py-3">FROM</th>
+                            <th class="border border-slate-300 px-6 py-3">UNTIL</th>
+                            <th class="border border-slate-300 px-6 py-3">RESERVATION DATE</th>
+                            <th class="border border-slate-300 px-6 py-3">ORDER DATE</th>
+                        </tr>
+                        @foreach($reservations as $reservation)
+                        <tr>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reservation->user->id }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reservation->user->email }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reservation->facility }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reservation->from }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reservation->until }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reservation->reservation_date }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reservation->created_at }}</td>
+                        </tr>
+                        @endforeach
                     </table>
                 </div>
                 <div class="hidden peer-checked/facilityreq:block">
