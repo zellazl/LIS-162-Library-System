@@ -22,7 +22,7 @@ class AdminController extends Controller
             // Pass the data to the admin view
             return view('admin.dashboard', compact('reqservices', 'reqresources', 'reservations'));
         } elseif ($user->role == 'user') {
-            abort(404); // Return a 404 error for admin users trying to access the dashboard
+            return view('sorry'); // Return a 404 error for admin users trying to access the dashboard
         }
 
         abort(403);

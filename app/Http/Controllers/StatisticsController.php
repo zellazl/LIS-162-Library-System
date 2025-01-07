@@ -22,7 +22,7 @@ class StatisticsController extends Controller
             // Return the view with totals
             return view('admin.statistics', compact('totalReqResources', 'totalReqServices', 'totalReservations'));
         }elseif ($user->role == 'user') {
-            abort(404);
+            return view('sorry');
         } 
         
     }
