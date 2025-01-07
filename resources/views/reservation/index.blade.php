@@ -116,52 +116,46 @@
         </div>
     </header>
 
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Service Request ID</th>
-                    <th>Full Name</th>
-                    <th>Type of Service</th>
-                    <th>Date of Service</th>
-                    <th>Timeslot</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($reqservices as $reqservice)
-                <tr>
-                    <td>{{ $reqservice->id }}</td>
-                    <td>{{ $reqservice->user_fullname }}</td>
-                    <td>{{ $reqservice->service_name }}</td>
-                    <td>{{ $reqservice->service_date }}</td>
-                    <td>{{ $reqservice->time_slot }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+     <div class="py-5">
+        <div class="max-w-7xl mxauto sm:px-6 lg:px-10">
+            <div class="relative bg-transparent overflow-hidden shadow-x1 sm:rounded lg">
+                <div class="px-5 lg:p-8 bg-white border-b border-gray-200">
+                    <h1 class="mt-3 mb-5 text-2x1 font-bold text-yellow-900">All Requests</h1>
+    
+    <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
+        <tr>
+            <th class="border border-slate-300 px-6 py-3">User ID</th>
+            <th class="border border-slate-300 px-6 py-3">EMAIL</th>
+            <th class="border border-slate-300 px-6 py-3">FACILITY</th>
+            <th class="border border-slate-300 px-6 py-3">FROM</th>
+            <th class="border border-slate-300 px-6 py-3">UNTIL</th>
+            <th class="border border-slate-300 px-6 py-3">RESERVATION DATE</th>
+            <th class="border border-slate-300 px-6 py-3">ORDER DATE</th>
+         </tr>
+        @foreach($reservations as $reservation)
+        <tr>
+            <td class="border border-slate-300 px-4 py-1">{{ $reservation->user->id }}</td>
+            <td class="border border-slate-300 px-4 py-1">{{ $reservation->user->email }}</td>
+            <td class="border border-slate-300 px-4 py-1">{{ $reservation->facility }}</td>
+            <td class="border border-slate-300 px-4 py-1">{{ $reservation->from }}</td>
+            <td class="border border-slate-300 px-4 py-1">{{ $reservation->until }}</td>
+            <td class="border border-slate-300 px-4 py-1">{{ $reservation->reservation_date }}</td>
+            <td class="border border-slate-300 px-4 py-1">{{ $reservation->created_at }}</td>
+         </tr>
+        @endforeach
+    </table>
+    <button type="button" class="rounded-md bg-[#fddc58] hover:bg-[#ffcc00] px-3 py-2 mt-8 text-sm font-semibold text-black">
+        <a href="{{ route('reservations.create') }}">Go to input</a>
+    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <footer>
+</body>
+    <footer class="absolute -bottom-2">
         <p class="mt-16 text-sm font-bold">UP School of Library and Information Science Studies Library</p>
         <p class="mb-8 text-sm">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
     </footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const dropdownButton = document.getElementById('dropdownAvatarNameButton');
-            const dropdownMenu = document.getElementById('dropdownAvatarName');
-
-            dropdownButton.addEventListener('click', function () {
-                dropdownMenu.classList.toggle('hidden');
-            });
-
-            window.addEventListener('click', function (e) {
-                if (!dropdownButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                    dropdownMenu.classList.add('hidden');
-                }
-            });
-        });
-    </script>
-</body>
-
 </html>
+

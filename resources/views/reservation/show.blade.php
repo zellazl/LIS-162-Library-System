@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ asset('images/logo_no.png') }}">
-    <title>Request Receipt</title>
+    <title>Reservation Receipt</title>
     <!--TailWind CSS-->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -51,37 +51,44 @@
     </header>
     <div class="flex flex-column gap-4 p-7">
         <section class="block basis-3/5 text-center space-y-5">
-            <h1 class="text-5xl font-bold">Requests</h1>
-            <img src="{{ asset('images/gabi_thanksRequest.png') }}" alt="Mascot" class="inline max-h-96 mx-1/2" />
+            <h1 class="text-5xl font-bold">Reservations</h1>
+            <img src="{{ asset('images/gabi_thanksReserve.png') }}" alt="Mascot" class="inline max-h-96 mx-1/2" />
         </section>
         <section class="block basis-1/3 text-center border-2 py-3 px-10 rounded-xl space-y-5">
-            <h2 class="font-bold text-2xl">Request details review</h2>
+            <h2 class="font-bold text-2xl">Reservation details review</h2>
             <table class="w-full table-fixed">
                 <tbody>
                     <tr>
-                        <td>Service Request ID</td>
-                        <td>{{ $reqservice->id }}</td>
+                        <td>Reservation ID</td>
+                        <td>{{ $reservation->id }}</td>
                     </tr>
                     <tr>
-                        <td>Full name</td>
-                        <td>{{ $reqservice->user_fullname }}</td>
+                        <td>User Email</td>
+                        <td>{{ $reservation->user->email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{ $reservation->user->name }}</td>
                     </tr>
                 </tbody>
             </table>
-            <hr />
             <table class="w-full table-fixed">
                 <tbody>
                     <tr>
-                        <td>Type of Service</td>
-                        <td>{{ $reqservice->service_name }}</td>
+                        <td>Reservation ID</td>
+                        <td>{{ $reservation->id }}</td>
                     </tr>
                     <tr>
-                        <td>Date of Service</td>
-                        <td>{{ $reqservice->service_date }}</td>
+                        <td>Date</td>
+                        <td>{{ $reservation->reservation_date }}</td>
                     </tr>
                     <tr>
                         <td>Timeslot</td>
-                        <td>{{ $reqservice->time_slot }}</td>
+                        <td>{{ $reservation->from }}-{{ $reservation->until }}</td>
+                    </tr>
+                    <tr>
+                        <td>Facility</td>
+                        <td>{{ $reservation->facility }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -89,12 +96,13 @@
     </div>
     <div class="grid grid-cols-1 gap-4 place-items-center">
         <button type="button" class="rounded-md bg-[#fddc58] hover:bg-[#ffcc00] px-3 py-2 mt-8 text-sm font-semibold text-black">
-            <a href="{{ route('reqservices.create') }}">Make another request</a>
+                <a href="{{ route('reservations.create') }}">Make another reservation</a>
         </button>
     </div>
 </body>
-<footer class="mt-20 text-center py-4 relative" style='background-color: #fddc58'>
-    <p class="mt-16 text-sm font-bold">UP School of Library and Information Science Studies Library</p>
-    <p class="mb-8 text-sm">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
-</footer>
+    
+    <footer class="mt-20 text-center py-4 relative absolute -bottom-24" style='background-color: #fddc58'>
+        <p class="mt-16 text-sm font-bold">UP School of Library and Information Science Studies Library</p>
+        <p class="mb-8 text-sm">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
+    </footer>
 </html>
