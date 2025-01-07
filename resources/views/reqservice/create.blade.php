@@ -169,10 +169,7 @@
                     <option value="Printing">Printing</option>
                 </select>
             </div>
-
-            
-
-            <div class="absolute bottom-24 right-80">
+            <div>
                 <button type=submit class="submit-btn">Submit</button>
             </div>
         </form>

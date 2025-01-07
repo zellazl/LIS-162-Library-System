@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="logo_no.png">
+    <link rel="icon" href="{{ asset('images/logo_no.png') }}">
     <title>Statistics</title>
     <!--TailWind CSS-->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -32,42 +32,43 @@
         align-items: center;
     }
 </style>
-<header class="resources">
+<header class="resources mb-36">
     <div class="flex">
-        <a href="/home"><img class="h-20 w-auto" src="library_logo.jpg" alt="Logo"></a>
         <h1 class="text-5xl font-bold absolute right-12">STATISTICS</h1>
-        <div class="block mt-4">
-            <a href="/home" class="text-xl font-bold text-amber-800">UP SLIS LIBRARY<br></a>
-            <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm pe-1 font-bold text-gray-900 rounded-full hover:text-blue-600 dark:hover:text-amber-600 md:me-0 dark:text-black" type="button">
-                ADMIN0351
-            </button>
-            <div id="dropdownAvatarName" class="hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-amber-100 dark:divide-white">
-                <div class="px-4 py-3 text-sm text-white dark:text-black">
-                    <div>Welcome</div>
-                    <div class="font-bold truncate">Admin0351</div>
-                </div>
-                <ul class="py-2 text-sm text-black dark:text-black" aria-labelledby="dropdownUserAvatarNameButton">
-                    <li>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Reservations</a>
-                    </li>
-                    <li>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Requests</a>
-                    </li>
-                    <li>
-                        <a href="#" class="hidden px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Statistics</a>
-                    </li>
-                </ul>
-                <div class="py-2">
-                    <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 dark:hover:bg-amber-200 dark:text-black dark:hover:text-black">Sign out</a>
-                </div>
+        <div class="flex">
+                <a href="/"><img class="h-20 w-auto" src="{{ asset('images/logo_no.png') }}" alt="Logo"></a>
+                <div class="block mt-4">
+                    <a href="/" class="text-xl font-bold text-amber-800">UP SLIS LIBRARY<br></a>
+                    <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm pe-1 font-bold text-gray-900 rounded-full hover:text-blue-600 dark:hover:text-amber-600 md:me-0 dark:text-black" type="button">
+                        {{ auth()->user()->name }}
+                    </button>
+                
+                    <div id="dropdownAvatarName" class="hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-white dark:divide-slate-100">
+                        <div class="px-4 py-3 text-sm text-white dark:text-black">
+                            <div>Welcome</div>
+                            <a href= "{{ route('profile.show') }}" class="font-bold truncate hover:text-amber-600">{{ auth()->user()->email }}</a>
+                        </div>
+                        <ul class="py-2 text-sm text-black dark:text-black" aria-labelledby="dropdownUserAvatarNameButton">
+                            <li>
+                                <a href= "{{ route('profile.show') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Profile</a>
+                            </li>
+                            <li>
+                                <a href= "/admin/dashboard" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Dashboard</a>
+                            </li>
+                        </ul>
+                        <div class="py-2">
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="text-sm w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">
+                                Log out
+                            </button>
+                        </form>
+                        </div>
+                    </div>
+                </div> 
             </div>
-        </div> 
-    </div>
 </header>
-<body>
+<body class="">
     <div class="py-6" id="donut-chart"></div>
 </body>
 <script> // rendered w Flowbite
@@ -160,11 +161,8 @@ if (document.getElementById("donut-chart") && typeof ApexCharts !== 'undefined')
   chart.render();
 }
 </script>
-<footer class="flex">
-    <div class="resources-footer">
-        <button href="/services">SERVICES</button>
-        <button href="/collection">COLLECTION</button>
-        <button href="/resources">RESOURCES</button>
-    </div>
-</footer>
+    <footer class="mt-20 text-center py-4 relative absolute -bottom-24" style='background-color: #fddc58'>
+        <p class="mt-16 text-sm font-bold">UP School of Library and Information Science Studies Library</p>
+        <p class="mb-8 text-sm">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
+    </footer>
 </html>
