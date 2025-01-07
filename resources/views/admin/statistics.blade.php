@@ -73,7 +73,7 @@
 <script> // rendered w Flowbite
 const getChartOptions = () => {
 return {
-    series: [0, 2, 0], // data goes here
+    series: [@json($totalReqResources), @json($totalReqServices), @json($totalReservations)], // should convert to json
     colors: ["#f7da5b", "#e5c53f", "#c3a53f"],
     chart: {
       height: 480,

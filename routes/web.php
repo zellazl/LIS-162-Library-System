@@ -8,6 +8,7 @@ use App\Http\Controllers\ReqserviceController;
 use App\Http\Controllers\ReqresourceController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\StatisticsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,6 +39,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); 
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard'); });
 
+Route::middleware(['auth:sanctum', 'verified'])->group(function () { 
+    Route::get('/admin/statistics', [StatisticsController::class, 'index'])->name('admin.statistics'); 
+});
+
 //Login so admin will be redirected sa /admin/dashboard
 Route::post('/login', function (Request $request) {
     $credentials = $request->only('email', 'password');
@@ -53,7 +58,10 @@ Route::post('/login', function (Request $request) {
 });
 
 
-
+//delete
+Route::delete('/reqservices/{id}', [AdminController::class, 'serviceDestroy']);
+Route::delete('/reqresources/{id}', [AdminController::class, 'resourceDestroy']);
+Route::delete('/reservations/{id}', [AdminController::class, 'reservationDestroy']);
 
 // Request-Services route, user view 
     Route::resource('reqservices', ReqserviceController::class);

@@ -14,19 +14,41 @@ class AdminController extends Controller
         // Fetch all reqservices and reqresources from the database
         $reqservices = Reqservice::all();
         $reqresources = Reqresource::all();
-        $reservation = Reservation::all();
+        $reservations = Reservation::all();
 
         // Pass the data to the admin view
-        return view('admin.dashboard', compact('reqservices', 'reqresources', 'reservation'));
+        return view('admin.dashboard', compact('reqservices', 'reqresources', 'reservations'));
     }
     
-     public function destroy(string $id)
+     public function serviceDestroy(string $id)
     {
-        $delRecord = Reqservice::findOrFail($id);
-        $delRecord = Reqresource::findOrFail($id);
-        $delRecord = Reservation::findOrFail($id);
-        $delRecord->delete();
-        
-        return redirect()->route('admins.index');
+        $reqservices = Reqservice::find($id);
+        if(!$reqservices){
+            return redirect('/admin/dashboard')->with('error', "Service ID {$id} not found.");
+        }
+        $reqservices->delete();
+        return redirect('/admin/dashboard')->with('success', "Service ID {$id} deleted successfully.");
     }
+
+    public function resourceDestroy(string $id)
+    {
+        $reqresources = Reqresource::find($id);
+        if(!$reqresources){
+            return redirect('/admin/dashboard')->with('error', "Resource ID {$id} not found.");
+        }
+        $reqresources->delete();
+        return redirect('/admin/dashboard')->with('success', "Resource ID {$id} deleted successfully.");
+    }
+
+    
+    public function reservationDestroy(string $id)
+    {
+        $reservations = Reservation::find($id);
+        if(!$reservations){
+            return redirect('/admin/dashboard')->with('error', "Reservation ID {$id} not found.");
+        }
+        $reservations->delete();
+        return redirect('/admin/dashboard')->with('success', "Reservation ID {$id} deleted successfully.");
+    }
+
 }
