@@ -59,34 +59,34 @@
             <table class="w-full table-fixed">
                 <tbody>
                     <tr>
-                        <td>Request ID</td>
+
+                        <td>Resource Request ID</td>
                         <td>{{ $reqresource->id }}</td>
                     </tr>
                     <tr>
-                        <td>Name</td>
+                        <td>Full name</td>
                         <td>{{ $reqresource->user_fullname }}</td>
                     </tr>
                     <tr>
                         <td>Claim date</td>
                         <td>{{ $reqresource->claim_date }}</td>
                     </tr>
-
                 </tbody>
             </table>
             <hr />
-            <h3 class="font-bold">Item</h3>
+            <h3 class="font-bold">Resource</h3>
             <table class="w-full table-fixed">
                 <tbody>
                     <tr>
-                        <td>Resource Title</td>
+                        <td>Title</td>
                         <td>{{ $reqresource->resource_title }}</td>
                     </tr>
                     <tr>
-                        <td>Resource Author</td>
+                        <td>Author</td>
                         <td>{{ $reqresource->resource_author }}</td>
                     </tr>
                     <tr>
-                        <td>Resource Accession Number</td>
+                        <td>Accession no.</td>
                         <td>{{ $reqresource->resource_accession_number }}</td>
                     </tr>
                 </tbody>
@@ -104,5 +104,4 @@
         <p class="mt-16 text-sm font-bold">UP School of Library and Information Science Studies Library</p>
         <p class="mb-8 text-sm">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
     </footer>
-
 </html>

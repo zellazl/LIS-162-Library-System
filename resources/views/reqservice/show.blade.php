@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ asset('images/logo_no.png') }}">
-    <title>UPSLIS Library Services</title>
+    <title>Request Receipt</title>
     <!--TailWind CSS-->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -59,11 +59,11 @@
             <table class="w-full table-fixed">
                 <tbody>
                     <tr>
-                        <td>Request ID</td>
+                        <td>Service Request ID</td>
                         <td>{{ $reqservice->id }}</td>
                     </tr>
                     <tr>
-                        <td>Name</td>
+                        <td>Full name</td>
                         <td>{{ $reqservice->user_fullname }}</td>
                     </tr>
                 </tbody>
@@ -72,12 +72,12 @@
             <table class="w-full table-fixed">
                 <tbody>
                     <tr>
-                        <td>Date</td>
-                        <td>{{ $reqservice->service_date }}</td>
+                        <td>Type of Service</td>
+                        <td>{{ $reqservice->service_name }}</td>
                     </tr>
                     <tr>
-                        <td>Service</td>
-                        <td>{{ $reqservice->service_name }}</td>
+                        <td>Date of Service</td>
+                        <td>{{ $reqservice->service_date }}</td>
                     </tr>
                     <tr>
                         <td>Timeslot</td>
