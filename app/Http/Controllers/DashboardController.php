@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Reqservice;
 use App\Models\Reqresource;
+use App\Models\Reservation;
 
 class DashboardController extends Controller
 {
@@ -25,6 +26,7 @@ class DashboardController extends Controller
     {
         $reqservices = Reqservice::get();
         $reqresources = Reqresource::get();
-        return view ('dashboard', compact ('reqservices', 'reqresources'));
+        $reservations = Reservation::get();
+        return view ('dashboard', compact ('reqservices', 'reqresources', 'reservations'));
     }
 }

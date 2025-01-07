@@ -58,7 +58,10 @@ Route::post('/login', function (Request $request) {
 });
 
 
-
+//delete
+Route::delete('/reqservices/{id}', [AdminController::class, 'serviceDestroy']);
+Route::delete('/reqresources/{id}', [AdminController::class, 'resourceDestroy']);
+Route::delete('/reservations/{id}', [AdminController::class, 'reservationDestroy']);
 
 // Request-Services route, user view 
     Route::resource('reqservices', ReqserviceController::class);

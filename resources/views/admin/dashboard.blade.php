@@ -43,15 +43,6 @@
                                 <a href= "{{ route('profile.show') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Profile</a>
                             </li>
                             <li>
-                                <a href="" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Reservations</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('reqservices.create') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Facility Requests</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('reqresources.create') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Resource Requests</a>
-                            </li>
-                            <li>
                                 <a href="" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Statistics</a>
                             </li>
                         </ul>
@@ -78,39 +69,41 @@
                 <label for="reservations" class="peer-checked/reservations:text-amber-800 mr-4">Reservations</label>
               
                 <input id="facilityreq" class="peer/facilityreq" type="radio" name="status" />
-                <label for="facilityreq" class="peer-checked/facilityreq:text-amber-800 mr-4">Facility</label>
+                <label for="facilityreq" class="peer-checked/facilityreq:text-amber-800 mr-4">Service</label>
 
                 <input id="resourcereq" class="peer/resourcereq" type="radio" name="status" />
                 <label for="resourcereq" class="peer-checked/resourcereq:text-amber-800 mr-4">Resource</label>
               
                 <div class="hidden peer-checked/reservations:block">
-                    <table>
-                        <thead class="bg-amber-200">
+                    <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
+                        <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Email</th>
-                                <th>Facility</th>
-                                <th>Time Slot </th>
-                                <th>Reservation Date</th>
-                                <th>Order Date</th>
+                                <th class="border border-slate-300 px-6 py-3">ID</th>
+                                <th class="border border-slate-300 px-6 py-3">Email</th>
+                                <th class="border border-slate-300 px-6 py-3">Facility</th>
+                                <th class="border border-slate-300 px-6 py-3">Time Slot </th>
+                                <th class="border border-slate-300 px-6 py-3">Reservation Date</th>
+                                <th class="border border-slate-300 px-6 py-3">Order Date</th>
+                                <th class="border border-slate-300 px-6 py-3">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                            <td>{{ $reservation->id }}</td>
-                            <td>{{ $reservation->user->email }}</td>
-                            <td>{{ $reservation->facility }}</td>
-                            <td>{{ $reservation->from }}-{{ $reservation->until }}</td>
-                            <td>{{ $reservation->reservation_date }}</td>
-                            <td>{{ $reservation->created_at }}</td>
-                            <td>
-                                <form action="{{ route('admins.destroy', $reservation->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
-                                </form>
-                            </td>
-                            </tr>
+                            @foreach($reservations as $reservation)
+                                <tr>
+                                    <td class="border border-slate-300 px-4 py-1">{{ $reservation->id }}</td>
+                                    <td class="border border-slate-300 px-4 py-1">{{ $reservation->user->email }}</td>
+                                    <td class="border border-slate-300 px-4 py-1">{{ $reservation->facility }}</td>
+                                    <td class="border border-slate-300 px-4 py-1">{{ $reservation->from }}-{{ $reservation->until }}</td>
+                                    <td class="border border-slate-300 px-4 py-1">{{ $reservation->reservation_date }}</td>
+                                    <td class="border border-slate-300 px-4 py-1">{{ $reservation->created_at }}</td>
+                                    <td class="border border-slate-300 px-4 py-1">
+                                        <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                                        </form>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -123,7 +116,8 @@
                             <th class="border border-slate-300 px-6 py-3">Type of Service</th>
                             <th class="border border-slate-300 px-6 py-3">Date of Service</th>
                             <th class="border border-slate-300 px-6 py-3">Timeslot</th>
-                            <th class="border border-slate-300 px-6 py-3">Transaction Status</th>
+                            <th class="border border-slate-300 px-6 py-3">Order Date</th>
+                            <th class="border border-slate-300 px-6 py-3">Action</th>
                         </tr>
                         @foreach($reqservices as $reqservice)
                         <tr>
@@ -132,9 +126,9 @@
                             <td class="border border-slate-300 px-4 py-1">{{ $reqservice->service_name }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqservice->service_date }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqservice->time_slot }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->transaction_status }}</td>
-                            <td>
-                                 <form action="{{ route('admins.destroy', $reqservice->id) }}" method="POST">
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->created_at }}</td>
+                            <td class="border border-slate-300 px-4 py-1">
+                                 <form action="{{ route('reqservices.destroy', $reqservice->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
@@ -153,48 +147,25 @@
                             <th class="border border-slate-300 px-6 py-3">Title</th>
                             <th class="border border-slate-300 px-6 py-3">Author</th>
                             <th class="border border-slate-300 px-6 py-3">Accession Number</th>
-                            <th class="border border-slate-300 px-6 py-3">Transaction Status</th>
+                            <th class="border border-slate-300 px-6 py-3">Order Date</th>
+                            <th class="border border-slate-300 px-6 py-3">Action</th>
                         </tr>
                         @foreach($reqresources as $reqresource)
                         <tr>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->id }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->->user->email }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->user->email }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->claim_date }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_title }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_author }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_accession_number }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->transaction_status }}</td>
-                            <td>
-                                <form action="{{ route('admins.destroy', $reservation->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->created_at }}</td>
+                            <td class="border border-slate-300 px-4 py-1">
+                                <form action="{{ route('reqresources.destroy', $reqresource->id) }}" method="POST">
+                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                                    @method('DELETE')
+                                    @csrf
                                 </form>
                             </td>
-                        </tr>
-                        @endforeach
-                    </table>
-                </div>
-                <div class="hidden peer-checked/resourcereq:block">
-                    <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
-                        <tr>
-                            <th class="border border-slate-300 px-6 py-3">Resource Request ID</th>
-                            <th class="border border-slate-300 px-6 py-3">Full Name</th>
-                            <th class="border border-slate-300 px-6 py-3">Email</th>
-                            <th class="border border-slate-300 px-6 py-3">Claim Date</th>
-                            <th class="border border-slate-300 px-6 py-3">Title</th>
-                            <th class="border border-slate-300 px-6 py-3">Author</th>
-                            <th class="border border-slate-300 px-6 py-3">Accession Number</th>
-                        </tr>
-                        @foreach($reqresources as $reqresource)
-                        <tr>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->id }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->user_fullname }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->user_email }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->claim_date }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_title }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_author }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_accession_number }}</td>
                         </tr>
                         @endforeach
                     </table>

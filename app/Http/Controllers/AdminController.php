@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reqservice;
 use App\Models\Reqresource;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,19 +14,43 @@ class AdminController extends Controller
         // Fetch all reqservices and reqresources from the database
         $reqservices = Reqservice::all();
         $reqresources = Reqresource::all();
-        $reservation = Reservation::all();
+        $reservations = Reservation::all();
 
         // Pass the data to the admin view
-        return view('admin.dashboard', compact('reqservices', 'reqresources', 'reservation'));
+        return view('admin.dashboard', compact('reqservices', 'reqresources', 'reservations'));
     }
     
-     public function destroy(string $id)
+     public function serviceDestroy(string $id)
     {
-        $delRecord = Reqservice::findOrFail($id);
-        $delRecord = Reqresource::findOrFail($id);
-        $delRecord = Reservation::findOrFail($id);
-        $delRecord->delete();
+        $reqservices = Reqservice::find($id);
+        $reqservices->delete();
+        if(!$reqservices){
+            return redirect()->route('admin.dashboard')
+        }
         
-        return redirect()->route('admins.index');
+        
+        return view('admin.dashboard', compact('reqservices'));
     }
+
+    public function resourceDestroy(string $id)
+    {
+        $reqresources = Reqresource::findorFail($id);
+        $reqresources->delete();
+        if(!$reqresources){
+            return redirect()->route('admin.dashboard')
+        }
+        return redirect()->route('admin.dashboard', compact('reqresources'));
+    }
+
+    
+    public function reservationDestroy(string $id)
+    {
+        $reservations = Reservation::findorFail($id);
+        $reservations->delete();
+        if(!$reservations){
+            return redirect()->route('admin.dashboard')
+        }
+        return redirect()->route('admin.dashboard', compact('reservations'));
+    }
+
 }
