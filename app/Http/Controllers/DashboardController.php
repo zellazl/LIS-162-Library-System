@@ -24,9 +24,16 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $reqservices = Reqservice::get();
-        $reqresources = Reqresource::get();
-        $reservations = Reservation::get();
-        return view ('dashboard', compact ('reqservices', 'reqresources', 'reservations'));
+        $user = Auth::user();
+        if ($user->role == 'admin') {
+            abort(404);
+        } elseif ($user->role == 'user') {
+            return view('dashboard'); // Return a 404 error for admin users trying to access the dashboard
+        }
+
+        abort(403); // Return a 403 Forbidden error for any other roles
     }
+
+
+    
 }

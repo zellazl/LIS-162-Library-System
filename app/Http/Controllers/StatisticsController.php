@@ -13,12 +13,17 @@ class StatisticsController extends Controller
     {
         // Ensure the user is authenticated and has admin role
         $user = Auth::user();
-        // Fetch total counts
-        $totalReqResources = reqresource::count();
-        $totalReqServices = reqservice::count();
-        $totalReservations = Reservation::count();
+        if ($user->role == 'admin') {
+            // Fetch total counts
+            $totalReqResources = reqresource::count();
+            $totalReqServices = reqservice::count();
+            $totalReservations = Reservation::count();
 
-        // Return the view with totals
-        return view('admin.statistics', compact('totalReqResources', 'totalReqServices', 'totalReservations'));
+            // Return the view with totals
+            return view('admin.statistics', compact('totalReqResources', 'totalReqServices', 'totalReservations'));
+        }elseif ($user->role == 'user') {
+            abort(404);
+        } 
+        
     }
 }

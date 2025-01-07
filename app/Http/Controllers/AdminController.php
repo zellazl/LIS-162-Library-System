@@ -5,19 +5,27 @@ namespace App\Http\Controllers;
 use App\Models\Reqservice;
 use App\Models\Reqresource;
 use App\Models\Reservation;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        // Fetch all reqservices and reqresources from the database
-        $reqservices = Reqservice::all();
-        $reqresources = Reqresource::all();
-        $reservations = Reservation::all();
+        $user = Auth::user();
+        if ($user->role == 'admin') {
+            // Fetch all reqservices and reqresources from the database
+            $reqservices = Reqservice::all();
+            $reqresources = Reqresource::all();
+            $reservations = Reservation::all();
 
-        // Pass the data to the admin view
-        return view('admin.dashboard', compact('reqservices', 'reqresources', 'reservations'));
+            // Pass the data to the admin view
+            return view('admin.dashboard', compact('reqservices', 'reqresources', 'reservations'));
+        } elseif ($user->role == 'user') {
+            abort(404); // Return a 404 error for admin users trying to access the dashboard
+        }
+
+        abort(403);
     }
     
      public function serviceDestroy(string $id)
