@@ -9,7 +9,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <style>
-    
     .services {
         display: flex;
         align-items: center;
@@ -54,19 +53,25 @@
         <section class="block basis-3/5 text-center space-y-5">
             <h1 class="text-5xl font-bold">Reservations</h1>
             <img src="{{ asset('images/gabi_thanksReserve.png') }}" alt="Mascot" class="inline max-h-96 mx-1/2" />
-            
         </section>
         <section class="block basis-1/3 text-center border-2 py-3 px-10 rounded-xl space-y-5">
             <h2 class="font-bold text-2xl">Reservation details review</h2>
             <table class="w-full table-fixed">
                 <tbody>
                     <tr>
+                        <td>Reservation ID</td>
+                        <td>{{ $reservation->id }}</td>
+                    </tr>
+                    <tr>
+                        <td>User Email</td>
+                        <td>{{ $reservation->user->email }}</td>
+                    </tr>
+                    <tr>
                         <td>Name</td>
                         <td>{{ $reservation->user->name }}</td>
                     </tr>
                 </tbody>
             </table>
-            <hr />
             <table class="w-full table-fixed">
                 <tbody>
                     <tr>
@@ -100,6 +105,4 @@
         <p class="mt-16 text-sm font-bold">UP School of Library and Information Science Studies Library</p>
         <p class="mb-8 text-sm">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
     </footer>
-
-</body>
 </html>
