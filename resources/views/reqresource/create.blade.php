@@ -120,7 +120,6 @@
                 <label for="user_fullname">Your Name (LAST NAME, Given MI.)</label>
                 <input type="text" name="user_fullname" id="user_fullname" required>
             </div>
-
             <div class="input-group">
                 <label for="claim_date">Claim Date</label>
                 <input type="date" name="claim_date" id="claim_date" required>

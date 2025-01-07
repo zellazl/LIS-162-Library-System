@@ -23,6 +23,15 @@
         tr {
             height: 1em;
         }
+
+        .alert {
+            transition: opacity 0.5s ease;
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+
     </style>
     <header class="mt-12 mx-8">
             <div class="flex">
@@ -43,16 +52,7 @@
                                 <a href= "{{ route('profile.show') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Profile</a>
                             </li>
                             <li>
-                                <a href="" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Reservations</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('reqservices.create') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Service Requests</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('reqresources.create') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Resource Requests</a>
-                            </li>
-                            <li>
-                                <a href="" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Statistics</a>
+                                <a href="/admin/statistics" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-amber-200 dark:hover:text-black">Statistics</a>
                             </li>
                         </ul>
                         <div class="py-2">
@@ -73,6 +73,20 @@
         <div class="w-3/4 mt-12 mx-36">
             <p class="text-xl font-bold mb-4">Welcome back, {{ auth()->user()->name }}!</p>
             <h2 class="text-4xl font-bold mb-4 border-b-4 border-b-slate rounded-sm w-full">Dashboard</h2>
+            <div class="text-sm text-center">
+                @if(session('success'))
+                    <div class="alert alert-success" id="success-message">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if(session('error'))
+                    <div class="alert alert-danger" id="error-message">
+                        {{ session('error') }}
+                    </div>
+                @endif
+            </div>
+
             <fieldset>
                 <input id="reservations" class="peer/reservations" type="radio" name="status" checked />
                 <label for="reservations" class="peer-checked/reservations:text-amber-800 mr-4">Reservations</label>
@@ -84,33 +98,35 @@
                 <label for="resourcereq" class="peer-checked/resourcereq:text-amber-800 mr-4">Resource</label>
               
                 <div class="hidden peer-checked/reservations:block">
-                    <table>
-                        <thead class="bg-amber-200">
+                    <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
+                        <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Email</th>
-                                <th>Facility</th>
-                                <th>Time Slot </th>
-                                <th>Reservation Date</th>
-                                <th>Order Date</th>
+                                <th class="border border-slate-300 px-6 py-3">ID</th>
+                                <th class="border border-slate-300 px-6 py-3">Email</th>
+                                <th class="border border-slate-300 px-6 py-3">Facility</th>
+                                <th class="border border-slate-300 px-6 py-3">Time Slot </th>
+                                <th class="border border-slate-300 px-6 py-3">Reservation Date</th>
+                                <th class="border border-slate-300 px-6 py-3">Order Date</th>
+                                <th class="border border-slate-300 px-6 py-3">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="odd:bg-white even:bg-amber-100">
-                            <td>{{ $reservation->id }}</td>
-                            <td>{{ $reservation->user->email }}</td>
-                            <td>{{ $reservation->facility }}</td>
-                            <td>{{ $reservation->from }}-{{ $reservation->until }}</td>
-                            <td>{{ $reservation->reservation_date }}</td>
-                            <td>{{ $reservation->created_at }}</td>
-                            <td>
-                                <form action="{{ route('admins.destroy', $reservation->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
-                                </form>
-                            </td>
-                            </tr>
+                            @foreach($reservations as $reservation)
+                                <tr>
+                                    <td class="border border-slate-300 px-4 py-1">{{ $reservation->id }}</td>
+                                    <td class="border border-slate-300 px-4 py-1">{{ $reservation->user->email }}</td>
+                                    <td class="border border-slate-300 px-4 py-1">{{ $reservation->facility }}</td>
+                                    <td class="border border-slate-300 px-4 py-1">{{ $reservation->from }}-{{ $reservation->until }}</td>
+                                    <td class="border border-slate-300 px-4 py-1">{{ $reservation->reservation_date }}</td>
+                                    <td class="border border-slate-300 px-4 py-1">{{ $reservation->created_at }}</td>
+                                    <td class="border border-slate-300 px-4 py-1">
+                                        <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                                        </form>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -119,22 +135,23 @@
                     <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
                         <tr>
                             <th class="border border-slate-300 px-6 py-3">Service Request ID</th>
-                            <th class="border border-slate-300 px-6 py-3">Email</th>
+                            <th class="border border-slate-300 px-6 py-3">User Name</th>
                             <th class="border border-slate-300 px-6 py-3">Type of Service</th>
                             <th class="border border-slate-300 px-6 py-3">Date of Service</th>
                             <th class="border border-slate-300 px-6 py-3">Timeslot</th>
-                            <th class="border border-slate-300 px-6 py-3">Transaction Status</th>
+                            <th class="border border-slate-300 px-6 py-3">Order Date</th>
+                            <th class="border border-slate-300 px-6 py-3">Action</th>
                         </tr>
                         @foreach($reqservices as $reqservice)
                         <tr>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqservice->id }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reservation->user->email }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->user_fullname }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqservice->service_name }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqservice->service_date }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqservice->time_slot }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->transaction_status }}</td>
-                            <td>
-                                 <form action="{{ route('admins.destroy', $reqservice->id) }}" method="POST">
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqservice->created_at }}</td>
+                            <td class="border border-slate-300 px-4 py-1">
+                                 <form action="{{ route('reqservices.destroy', $reqservice->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
@@ -153,58 +170,53 @@
                             <th class="border border-slate-300 px-6 py-3">Title</th>
                             <th class="border border-slate-300 px-6 py-3">Author</th>
                             <th class="border border-slate-300 px-6 py-3">Accession Number</th>
-                            <th class="border border-slate-300 px-6 py-3">Transaction Status</th>
+                            <th class="border border-slate-300 px-6 py-3">Order Date</th>
+                            <th class="border border-slate-300 px-6 py-3">Action</th>
                         </tr>
                         @foreach($reqresources as $reqresource)
                         <tr>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->id }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->->user->email }}</td>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->user->email }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->claim_date }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_title }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_author }}</td>
                             <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_accession_number }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->transaction_status }}</td>
-                            <td>
-                                <form action="{{ route('admins.destroy', $reservation->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->created_at }}</td>
+                            <td class="border border-slate-300 px-4 py-1">
+                                <form action="{{ route('reqresources.destroy', $reqresource->id) }}" method="POST">
+                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                                    @method('DELETE')
+                                    @csrf
                                 </form>
                             </td>
                         </tr>
                         @endforeach
                     </table>
                 </div>
-                <div class="hidden peer-checked/resourcereq:block">
-                    <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
-                        <tr>
-                            <th class="border border-slate-300 px-6 py-3">Resource Request ID</th>
-                            <th class="border border-slate-300 px-6 py-3">Full Name</th>
-                            <th class="border border-slate-300 px-6 py-3">Email</th>
-                            <th class="border border-slate-300 px-6 py-3">Claim Date</th>
-                            <th class="border border-slate-300 px-6 py-3">Title</th>
-                            <th class="border border-slate-300 px-6 py-3">Author</th>
-                            <th class="border border-slate-300 px-6 py-3">Accession Number</th>
-                        </tr>
-                        @foreach($reqresources as $reqresource)
-                        <tr>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->id }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->user_fullname }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->user_email }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->claim_date }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_title }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_author }}</td>
-                            <td class="border border-slate-300 px-4 py-1">{{ $reqresource->resource_accession_number }}</td>
-                        </tr>
-                        @endforeach
-                    </table>
-                </div>
             </fieldset>
         </div>
+        <script>
+            // Function to hide messages after a certain time
+            function hideMessage(elementId, timeout) {
+                const messageElement = document.getElementById(elementId);
+                if (messageElement) {
+                    setTimeout(() => {
+                        messageElement.classList.add('fade-out'); // Add fade-out class
+                        setTimeout(() => {
+                            messageElement.style.display = 'none'; // Hide after fade-out
+                        }, 500); // Match this duration with the CSS transition duration
+                    }, timeout);
+                }
+            }
+
+            // Call the function for success and error messages
+            hideMessage('success-message', 1000); // 5000 milliseconds = 5 seconds
+            hideMessage('error-message', 1000); // 5000 milliseconds = 5 seconds
+        </script>
     </body>
     <!-- Footer -->
-    <img src="{{ asset('images/gabi_no.png') }}" alt="Mascot" class="absolute left-1/2 transform -translate-x-1/2 w-auto h-80"> 
-    <footer class="mt-20 text-center py-4 relative absolute -bottom-24" style='background-color: #fddc58'>
+    <img src="{{ asset('images/gabi_no.png') }}" alt="Mascot" class="relative absolute -bottom-52 left-1/2 transform -translate-x-1/2 w-auto h-80"> 
+    <footer class="mt-20 text-center py-4 relative absolute bottom-0 w-full" style='background-color: #fddc58'>
         <p class="mt-16 text-sm font-bold">UP School of Library and Information Science Studies Library</p>
         <p class="mb-8 text-sm">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
     </footer>

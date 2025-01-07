@@ -1,53 +1,108 @@
 <!DOCTYPE html>
-<html>
-
-<link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css">
-
-<body class ="bg-yellow-200">
-    <title>Requests</title>
-    <header class="bg-yellow-600 w-screen py-5 flex pl-5 sticky top-0 z-10">
-
-        <div class="text-left">
-            <h1 class="text-4x1 font-black italic text-white">Services</h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ asset('images/logo_no.png') }}">
+    <title>Reservation Receipt</title>
+    <!--TailWind CSS-->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    .services {
+        display: flex;
+        align-items: center;
+        margin: 50px;
+    }
+    .services-footer {
+        margin: 20px 60px;
+    }
+    .services-footer button {
+        font-size: 14px;
+        background-color: #fddc58;
+        border: none;
+        padding: 15px 32px;
+        cursor: pointer;
+        border-radius: 8px;
+        display: inline;
+        justify-content: center;
+        align-items: center;
+    }
+    section button {
+        font-size: 21px;
+        color: white;
+        background-color: #e5c53f;
+        border: none;
+        padding: 15px 32px;
+        cursor: pointer;
+        border-radius: 8px;
+        display: inline;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<body>
+    <header class="services">
+        <a href="/"><img class="h-20 w-auto mr-2" src="{{ asset('images/logo_no.png') }}" alt="Logo"></a>
+        <div>            
+            <a href="/" class="text-xl font-bold text-amber-800">UP SLIS LIBRARY<br></a>
+            <a href="/dashboard" class="text-sm font-bold">Dashboard</a>
         </div>
-     </header>
-
-     <div class="py-5">
-        <div class="max-w-7xl mxauto sm:px-6 lg:px-10">
-            <div class="relative bg-transparent overflow-hidden shadow-x1 sm:rounded lg">
-                <div class="px-5 lg:p-8 bg-white border-b border-gray-200">
-                    <h1 class="mt-3 mb-5 text-2x1 font-bold text-yellow-900">Reciept</h1>
-    
-    <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
-        <tr>
-            <th class="border border-slate-300 px-6 py-3">User ID</th>
-            <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
-            <td class="border border-slate-300 px-6 py-3">{{ $reservation->id }}</td>
-
-            <th class="border border-slate-300 px-6 py-3">User Email</th>
-            <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
-            <td class="border border-slate-300 px-6 py-3">{{ $reservation->user->email }}</td>
-
-            <th class="border border-slate-300 px-6 py-3">Facility</th>
-            <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
-            <td class="border border-slate-300 px-6 py-3">{{ $reservation->facility }}</td>
-
-            <th class="border border-slate-300 px-6 py-3">Timeslot</th>
-            <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
-            <td class="border border-slate-300 px-6 py-3">{{ $reservation->from }}-{{ $reservation->until }}</td>
-
-            <th class="border border-slate-300 px-6 py-3">Reservation Date</th>
-            <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
-            <td class="border border-slate-300 px-6 py-3">{{ $reservation->reservation_date }}</td>
-         </tr>
-        
-    </table>
-    <button type="button class-0 left-0 rounded-md bg-yellow-200 hover:bg-yellow-100 px3 py-2 mt-8 text-sm font-semibold text-black text-yellow-900 object-contain">
-        <a href="{{ route('reservations.create') }}">Go to input</a>
-                </div>
-            </div>
-        </div>
+    </header>
+    <div class="flex flex-column gap-4 p-7">
+        <section class="block basis-3/5 text-center space-y-5">
+            <h1 class="text-5xl font-bold">Reservations</h1>
+            <img src="{{ asset('images/gabi_thanksReserve.png') }}" alt="Mascot" class="inline max-h-96 mx-1/2" />
+        </section>
+        <section class="block basis-1/3 text-center border-2 py-3 px-10 rounded-xl space-y-5">
+            <h2 class="font-bold text-2xl">Reservation details review</h2>
+            <table class="w-full table-fixed">
+                <tbody>
+                    <tr>
+                        <td>Reservation ID</td>
+                        <td>{{ $reservation->id }}</td>
+                    </tr>
+                    <tr>
+                        <td>User Email</td>
+                        <td>{{ $reservation->user->email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{ $reservation->user->name }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="w-full table-fixed">
+                <tbody>
+                    <tr>
+                        <td>Reservation ID</td>
+                        <td>{{ $reservation->id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Date</td>
+                        <td>{{ $reservation->reservation_date }}</td>
+                    </tr>
+                    <tr>
+                        <td>Timeslot</td>
+                        <td>{{ $reservation->from }}-{{ $reservation->until }}</td>
+                    </tr>
+                    <tr>
+                        <td>Facility</td>
+                        <td>{{ $reservation->facility }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
     </div>
-
+    <div class="grid grid-cols-1 gap-4 place-items-center">
+        <button type="button" class="rounded-md bg-[#fddc58] hover:bg-[#ffcc00] px-3 py-2 mt-8 text-sm font-semibold text-black">
+                <a href="{{ route('reservations.create') }}">Make another reservation</a>
+        </button>
+    </div>
 </body>
+    
+    <footer class="mt-20 text-center py-4 relative absolute -bottom-24" style='background-color: #fddc58'>
+        <p class="mt-16 text-sm font-bold">UP School of Library and Information Science Studies Library</p>
+        <p class="mb-8 text-sm">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
+    </footer>
 </html>

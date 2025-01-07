@@ -1,139 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Requests</title>
+    <link rel="icon" href="{{ asset('images/logo_no.png') }}">
+    <title>Request Receipt</title>
+    <!--TailWind CSS-->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .table-container {
-            margin: 20px auto;
-            width: 80%;
-            border-collapse: collapse;
-            background-color: white;
-            flex-grow: 1;
-        }
-
-        .table-container table {
-            width: 100%;
-            border: 1px solid #ff0000;
-        }
-
-        .table-container th,
-        .table-container td {
-            border: 1px solid #ff0000;
-            text-align: center;
-            padding: 10px;
-        }
-
-        .table-container th {
-            background-color: #ffffff;
-            font-weight: bold;
-        }
-    </style>
 </head>
-
+<style>
+    .services {
+        display: flex;
+        align-items: center;
+        margin: 50px;
+    }
+    .services-footer {
+        margin: 20px 60px;
+    }
+    .services-footer button {
+        font-size: 14px;
+        background-color: #fddc58;
+        border: none;
+        padding: 15px 32px;
+        cursor: pointer;
+        border-radius: 8px;
+        display: inline;
+        justify-content: center;
+        align-items: center;
+    }
+    section button {
+        font-size: 21px;
+        color: white;
+        background-color: #e5c53f;
+        border: none;
+        padding: 15px 32px;
+        cursor: pointer;
+        border-radius: 8px;
+        display: inline;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
 <body>
-    <header class="services flex items-center space-x-4 pl-10 bg-[#fddc58] border-b border-[#e0e0e0]">
-        <div>
-            <h1 class="text-xl font-bold text-black">Services</h1>
-            <nav class="flex space-x-8 mt-2 text-sm font-bold">
-                <a href="/" class="hover:text-amber-600">Home</a>
-                <a href="/about_us" class="hover:text-amber-600">About Us</a>
-                <a href="/contact_us" class="hover:text-amber-600">Contact Us</a>
-                <div class="relative">
-                    <button id="dropdownAvatarNameButton" class="flex items-center text-sm font-bold text-gray-900 rounded-full hover:text-amber-600">
-                        <span class="hover:text-amber-600">Services</span>
-                    </button>
-                    <div id="dropdownAvatarName" class="hidden absolute right-0 bg-white border border-gray-300 rounded shadow-lg mt-2 z-10">
-                        <ul>
-                            <li><a href="/services" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Services</a></li>
-                            <li><a href="/collection" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Collection</a></li>
-                            <li><a href="/resources" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Resources</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+    <header class="services">
+        <a href="/"><img class="h-20 w-auto mr-2" src="{{ asset('images/logo_no.png') }}" alt="Logo"></a>
+        <div>            
+            <a href="/" class="text-xl font-bold text-amber-800">UP SLIS LIBRARY<br></a>
+            <a href="/dashboard" class="text-sm font-bold">Dashboard</a>
         </div>
     </header>
-
-    <div class="py-5">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-10">
-            <div class="relative bg-transparent overflow-hidden shadow-x1 sm:rounded lg">
-                <div class="px-5 lg:p-8 bg-white border-b border-gray-200">
-                    <h1 class="mt-3 mb-5 text-2xl font-bold text-black">Receipt</h1>
-
-                    <table class="mt-6 text-black leading-relaxed">
-                        <tr>
-                            <th class="border border-[#ff0000] px-6 py-3">Service Request ID</th>
-                            <td class="border border-[#ff0000] px-6 py-3">&nbsp;</td>
-                            <td class="border border-[#ff0000] px-6 py-3">{{ $reqservice->id }}</td>
-
-                            <th class="border border-[#ff0000] px-6 py-3">Full name</th>
-                            <td class="border border-[#ff0000] px-6 py-3">&nbsp;</td>
-                            <td class="border border-[#ff0000] px-6 py-3">{{ $reqservice->user_fullname }}</td>
-
-                            <th class="border border-[#ff0000] px-6 py-3">Email</th>
-                            <td class="border border-[#ff0000] px-6 py-3">&nbsp;</td>
-                            <td class="border border-[#ff0000] px-6 py-3">{{ $reqservice->user_email }}</td>
-
-                            <th class="border border-[#ff0000] px-6 py-3">Type of Service</th>
-                            <td class="border border-[#ff0000] px-6 py-3">&nbsp;</td>
-                            <td class="border border-[#ff0000] px-6 py-3">{{ $reqservice->service_name }}</td>
-
-                            <th class="border border-[#ff0000] px-6 py-3">Date of Service</th>
-                            <td class="border border-[#ff0000] px-6 py-3">&nbsp;</td>
-                            <td class="border border-[#ff0000] px-6 py-3">{{ $reqservice->service_date }}</td>
-
-                            <th class="border border-[#ff0000] px-6 py-3">Timeslot</th>
-                            <td class="border border-[#ff0000] px-6 py-3">&nbsp;</td>
-                            <td class="border border-[#ff0000] px-6 py-3">{{ $reqservice->time_slot }}</td>
-                        </tr>
-                    </table>
-
-                    <button type="button" class="rounded-md bg-[#fddc58] hover:bg-[#ffcc00] px-3 py-2 mt-8 text-sm font-semibold text-black">
-                        <a href="{{ route('reqservices.create') }}">Go to input</a>
-                    </button>
-                </div>
-            </div>
-        </div>
+    <div class="flex flex-column gap-4 p-7">
+        <section class="block basis-3/5 text-center space-y-5">
+            <h1 class="text-5xl font-bold">Requests</h1>
+            <img src="{{ asset('images/gabi_thanksRequest.png') }}" alt="Mascot" class="inline max-h-96 mx-1/2" />
+        </section>
+        <section class="block basis-1/3 text-center border-2 py-3 px-10 rounded-xl space-y-5">
+            <h2 class="font-bold text-2xl">Request details review</h2>
+            <table class="w-full table-fixed">
+                <tbody>
+                    <tr>
+                        <td>Service Request ID</td>
+                        <td>{{ $reqservice->id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Full name</td>
+                        <td>{{ $reqservice->user_fullname }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr />
+            <table class="w-full table-fixed">
+                <tbody>
+                    <tr>
+                        <td>Type of Service</td>
+                        <td>{{ $reqservice->service_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Date of Service</td>
+                        <td>{{ $reqservice->service_date }}</td>
+                    </tr>
+                    <tr>
+                        <td>Timeslot</td>
+                        <td>{{ $reqservice->time_slot }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
     </div>
-
-    <footer class="bg-[#fddc58] text-center py-5 border-t border-[#e0e0e0]">
-        <p class="footer-text font-bold text-black">UP School of Library and Information Science Studies Library</p>
-        <p class="footer-location text-black">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
-    </footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const dropdownButton = document.getElementById('dropdownAvatarNameButton');
-            const dropdownMenu = document.getElementById('dropdownAvatarName');
-
-            dropdownButton.addEventListener('click', function (event) {
-                event.stopPropagation(); 
-                dropdownMenu.classList.toggle('hidden');
-            });
-
-            window.addEventListener('click', function (event) {
-                if (!dropdownMenu.contains(event.target) && !dropdownButton.contains(event.target)) {
-                    dropdownMenu.classList.add('hidden');
-                }
-            });
-        });
-    </script>
+    <div class="grid grid-cols-1 gap-4 place-items-center">
+        <button type="button" class="rounded-md bg-[#fddc58] hover:bg-[#ffcc00] px-3 py-2 mt-8 text-sm font-semibold text-black">
+            <a href="{{ route('reqservices.create') }}">Make another request</a>
+        </button>
+    </div>
 </body>
-
+<footer class="mt-20 text-center py-4 relative" style='background-color: #fddc58'>
+    <p class="mt-16 text-sm font-bold">UP School of Library and Information Science Studies Library</p>
+    <p class="mb-8 text-sm">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
+</footer>
 </html>

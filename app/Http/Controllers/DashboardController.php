@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Reqservice;
 use App\Models\Reqresource;
+use App\Models\Reservation;
 
 class DashboardController extends Controller
 {
@@ -23,8 +24,16 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $reqservices = Reqservice::get();
-        $reqresources = Reqresource::get();
-        return view ('dashboard', compact ('reqservices', 'reqresources'));
+        $user = Auth::user();
+        if ($user->role == 'admin') {
+            abort(404);
+        } elseif ($user->role == 'user') {
+            return view('dashboard'); // Return a 404 error for admin users trying to access the dashboard
+        }
+
+        abort(403); // Return a 403 Forbidden error for any other roles
     }
+
+
+    
 }

@@ -4,28 +4,59 @@ namespace App\Http\Controllers;
 
 use App\Models\Reqservice;
 use App\Models\Reqresource;
+use App\Models\Reservation;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        // Fetch all reqservices and reqresources from the database
-        $reqservices = Reqservice::all();
-        $reqresources = Reqresource::all();
-        $reservation = Reservation::all();
+        $user = Auth::user();
+        if ($user->role == 'admin') {
+            // Fetch all reqservices and reqresources from the database
+            $reqservices = Reqservice::all();
+            $reqresources = Reqresource::all();
+            $reservations = Reservation::all();
 
-        // Pass the data to the admin view
-        return view('admin.dashboard', compact('reqservices', 'reqresources', 'reservation'));
+            // Pass the data to the admin view
+            return view('admin.dashboard', compact('reqservices', 'reqresources', 'reservations'));
+        } elseif ($user->role == 'user') {
+            abort(404); // Return a 404 error for admin users trying to access the dashboard
+        }
+
+        abort(403);
     }
     
-     public function destroy(string $id)
+     public function serviceDestroy(string $id)
     {
-        $delRecord = Reqservice::findOrFail($id);
-        $delRecord = Reqresource::findOrFail($id);
-        $delRecord = Reservation::findOrFail($id);
-        $delRecord->delete();
-        
-        return redirect()->route('admins.index');
+        $reqservices = Reqservice::find($id);
+        if(!$reqservices){
+            return redirect('/admin/dashboard')->with('error', "Service ID {$id} not found.");
+        }
+        $reqservices->delete();
+        return redirect('/admin/dashboard')->with('success', "Service ID {$id} deleted successfully.");
     }
+
+    public function resourceDestroy(string $id)
+    {
+        $reqresources = Reqresource::find($id);
+        if(!$reqresources){
+            return redirect('/admin/dashboard')->with('error', "Resource ID {$id} not found.");
+        }
+        $reqresources->delete();
+        return redirect('/admin/dashboard')->with('success', "Resource ID {$id} deleted successfully.");
+    }
+
+    
+    public function reservationDestroy(string $id)
+    {
+        $reservations = Reservation::find($id);
+        if(!$reservations){
+            return redirect('/admin/dashboard')->with('error', "Reservation ID {$id} not found.");
+        }
+        $reservations->delete();
+        return redirect('/admin/dashboard')->with('success', "Reservation ID {$id} deleted successfully.");
+    }
+
 }
