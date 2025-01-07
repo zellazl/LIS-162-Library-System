@@ -1,73 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Receipt</title>
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="icon" href="{{ asset('images/logo_no.png') }}">
+    <title>Resource Receipt</title>
+    <!--TailWind CSS-->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
-<body class="bg-yellow-200">
-
-    <header class="services flex items-center space-x-4 pl-10 mt-4">
-        <a href="/" class="flex-shrink-0">
-            <img class="h-20 w-auto" src="{{ asset('images/logo_no.png') }}" alt="Logo">
-        </a>
-        <div>
-            <a href="/" class="text-xl font-bold text-amber-800">UP SLIS LIBRARY</a>
-            <nav class="flex space-x-8 mt-2 text-sm font-bold">
-                <a href="/dashboard" class="hover:text-amber-600">Dashboard</a>
-            </nav>
+<style>
+    .services {
+        display: flex;
+        align-items: center;
+        margin: 50px;
+    }
+    .services-footer {
+        margin: 20px 60px;
+    }
+    .services-footer button {
+        font-size: 14px;
+        background-color: #fddc58;
+        border: none;
+        padding: 15px 32px;
+        cursor: pointer;
+        border-radius: 8px;
+        display: inline;
+        justify-content: center;
+        align-items: center;
+    }
+    section button {
+        font-size: 21px;
+        color: white;
+        background-color: #e5c53f;
+        border: none;
+        padding: 15px 32px;
+        cursor: pointer;
+        border-radius: 8px;
+        display: inline;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<body>
+    <header class="services">
+        <a href="/"><img class="h-20 w-auto mr-2" src="{{ asset('images/logo_no.png') }}" alt="Logo"></a>
+        <div>            
+            <a href="/" class="text-xl font-bold text-amber-800">UP SLIS LIBRARY<br></a>
+            <a href="/dashboard" class="text-sm font-bold">Dashboard</a>
         </div>
     </header>
+    <div class="flex flex-column gap-4 p-7">
+        <section class="block basis-3/5 text-center space-y-5">
+            <h1 class="text-5xl font-bold">Requests</h1>
+            <img src="{{ asset('images/gabi_thanksRequest.png') }}" alt="Mascot" class="inline max-h-96 mx-1/2"/>
+        </section>
+        <section class="block basis-1/2 text-center border-2 py-3 px-10 rounded-xl space-y-5">
+            <h2 class="font-bold text-2xl">Request details review</h2>
+            <table class="w-full table-fixed">
+                <tbody>
+                    <tr>
+                        <td>Request ID</td>
+                        <td>{{ $reqresource->id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{ $reqresource->user_fullname }}</td>
+                    </tr>
+                    <tr>
+                        <td>Claim date</td>
+                        <td>{{ $reqresource->claim_date }}</td>
+                    </tr>
 
-    <div class="py-5">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-10">
-            <div class="relative bg-transparent overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="px-5 lg:p-8 bg-white border-b border-gray-200">
-                    <h1 class="mt-3 mb-5 text-2xl font-bold text-yellow-900">Receipt</h1>
-
-                    <table class="mt-6 text-yellow-900 dark:text-yellow-900 leading-relaxed">
-                        <tr>
-                            <th class="border border-slate-300 px-6 py-3">Resource Request ID</th>
-                            <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
-                            <td class="border border-slate-300 px-6 py-3">{{ $reqresource->id }}</td>
-
-                            <th class="border border-slate-300 px-6 py-3">Full name</th>
-                            <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
-                            <td class="border border-slate-300 px-6 py-3">{{ $reqresource->user_fullname }}</td>
-
-                            <th class="border border-slate-300 px-6 py-3">Claim Date</th>
-                            <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
-                            <td class="border border-slate-300 px-6 py-3">{{ $reqresource->claim_date }}</td>
-
-                            <th class="border border-slate-300 px-6 py-3">Resource Title</th>
-                            <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
-                            <td class="border border-slate-300 px-6 py-3">{{ $reqresource->resource_title }}</td>
-
-                            <th class="border border-slate-300 px-6 py-3">Resource Author</th>
-                            <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
-                            <td class="border border-slate-300 px-6 py-3">{{ $reqresource->resource_author }}</td>
-
-                            <th class="border border-slate-300 px-6 py-3">Resource Accession Number</th>
-                            <td class="border border-slate-300 px-6 py-3">&nbsp;</td>
-                            <td class="border border-slate-300 px-6 py-3">{{ $reqresource->resource_accession_number }}</td>
-                        </tr>
-                    </table>
-
-                    <button type="button" class="left-0 rounded-md bg-yellow-200 hover:bg-yellow-100 px-3 py-2 mt-8 text-sm font-semibold text-black text-yellow-900 object-contain">
-                        <a href="{{ route('reqresources.create') }}">Go to input</a>
-                    </button>
-                </div>
-            </div>
-        </div>
+                </tbody>
+            </table>
+            <hr />
+            <h3 class="font-bold">Item</h3>
+            <table class="w-full table-fixed">
+                <tbody>
+                    <tr>
+                        <td>Resource Title</td>
+                        <td>{{ $reqresource->resource_title }}</td>
+                    </tr>
+                    <tr>
+                        <td>Resource Author</td>
+                        <td>{{ $reqresource->resource_author }}</td>
+                    </tr>
+                    <tr>
+                        <td>Resource Accession Number</td>
+                        <td>{{ $reqresource->resource_accession_number }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
     </div>
+    <div class="grid grid-cols-1 gap-4 place-items-center">
+        <button type="button" class="rounded-md bg-[#fddc58] hover:bg-[#ffcc00] px-3 py-2 mt-8 text-sm font-semibold text-black">
+                <a href="{{ route('reqresources.create') }}">Make another request</a>
+        </button>
+    </div>
+</body>
 
     <footer class="mt-20 text-center py-4 relative" style='background-color: #fddc58'>
         <p class="mt-16 text-sm font-bold">UP School of Library and Information Science Studies Library</p>
         <p class="mb-8 text-sm">Temporary Location: 2nd Floor, College of Science Library Bldg., Velazquez St., UP Campus Diliman, Quezon City</p>
     </footer>
-</body>
 
 </html>
