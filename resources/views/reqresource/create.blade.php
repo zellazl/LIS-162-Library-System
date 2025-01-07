@@ -5,13 +5,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ asset('images/logo_no.png') }}">
-    <title>Room Index</title>
+    <title>Resource Requests</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+    <style>
+        body {
+            background-color:rgb(255, 247, 205);
+            margin: 0;
+            padding: 0;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 40px;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 20px;
+        }
+
+        .form-section {
+            width: 40%;
+            text-align: left;
+        }
+
+        .form-section .input-group {
+            margin: 20px 0;
+            background-color: #f7d547;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .input-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 90%;
+            padding: 8px 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            background-color: #fff;
+        }
+
+        .carousel-section {
+            width: 50%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-left: -20px;
+        }
+
+        .carousel-placeholder {
+            width: 500px;
+            height: 300px;
+            border-radius: 10px;
+            border: 2px solid rgb(255, 247, 205);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color:rgb(255, 247, 205);
+            position: relative;
+        }
+
+        .carousel-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .carousel-placeholder a {
+            position: absolute;
+            color: rgb(0, 0, 0);
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            top: 50%; 
+            left: 21%;
+            transform: translate(-50%, -50%);
+        }
+
+        footer {
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 
-<body class="bg-yellow-200">
-    <header class="services flex items-center space-x-4 pl-10 mt-4">
+<body >
+    <header class="flex items-center space-x-4 pl-10 py-4 bg-[#f7d547]">
         <a href="/" class="flex-shrink-0">
             <img class="h-20 w-auto" src="{{ asset('images/logo_no.png') }}" alt="Logo">
         </a>
@@ -23,73 +116,45 @@
         </div>
     </header>
 
-    <div class="py-5">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-10">
-            <div class="relative bg-transparent overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="px-5 lg:p-8 bg-white border-b border-gray-200">
+    <div class="container">
+        <form action="{{ route('reqresources.index') }}" method="post" class="form-section">
+            @csrf
+            <div class="input-group">
+                <label for="user_fullname">Your Name (LAST NAME, Given MI.)</label>
+                <input type="text" name="user_fullname" id="user_fullname" required>
+            </div>
+            <div class="input-group">
+                <label for="claim_date">Claim Date</label>
+                <input type="date" name="claim_date" id="claim_date" required>
+            </div>
 
-                    <h1 class="mt-3 mb-5 text-2xl font-bold font-mono text-yellow-900">Request a service here:</h1>
+            <div class="input-group">
+                <label for="resource_title">Full Resource Title</label>
+                <input type="text" name="resource_title" id="resource_title" required>
+            </div>
 
-                    <form action="{{ route('reqresources.index') }}" method="post">
-                        @csrf
+            <div class="input-group">
+                <label for="resource_author">Author/s (LAST NAME, Given MI.)</label>
+                <input type="text" name="resource_author" id="resource_author" required>
+            </div>
 
-                        <div class="col-span-full">
-                            <label for="user_fullname" class="block text-sm/6 font-mono font-medium italic text-yellow-900">
-                                Please input your name as follows: LAST NAME, Given MI.
-                            </label>
-                            <div class="mt-2">
-                                <input type="string" name="user_fullname" id="" class="block w-full rounded-md border-0 pl-2 px-3 py-5 text-base font-mono font-medium text-yellow-900 shadow-sm ring-1 ring-inset ring-gray-300">
-                            </div>
-                        </div>
+            <div class="input-group">
+                <label for="resource_accession_number">Accession Number</label>
+                <input type="text" name="resource_accession_number" id="resource_accession_number" required>
+            </div>
 
-                        <div class="col-span-full">
-                            <label for="claim_date" class="block text-sm/6 font-mono font-medium italic text-yellow-900">
-                                When would you like to claim your resource?
-                            </label>
-                            <div class="mt-2">
-                                <input type="date" name="claim_date" id="" class="block w-full rounded-md border-0 pl-2 px-3 py-5 text-base font-mono font-medium text-yellow-900 shadow-sm ring-1 ring-inset ring-gray-300">
-                            </div>
-                        </div>
+            <div>
+                <button type="submit" class="rounded-md bg-[#f7d547] px-4 py-4 text-sm font-bold text-black shadow-sm hover:bg-yellow-600">Submit</button>
+            </div>
+        </form>
 
-                        <div class="col-span-full">
-                            <label for="resource_title" class="block text-sm/6 font-mono font-medium italic text-yellow-900">
-                                Please input the full title of the resource.
-                            </label>
-                            <div class="mt-2">
-                                <input type="string" name="resource_title" id="" class="block w-full rounded-md border-0 pl-2 px-3 py-5 text-base font-mono font-medium text-yellow-900 shadow-sm ring-1 ring-inset ring-gray-300">
-                            </div>
-                        </div>
-
-                        <div class="col-span-full">
-                            <label for="resource_author" class="block text-sm/6 font-mono font-medium italic text-yellow-900">
-                                Please input the name/s of the author/s as follows: LAST NAME, Given MI.
-                            </label>
-                            <div class="mt-2">
-                                <input type="string" name="resource_author" id="" class="block w-full rounded-md border-0 pl-2 px-3 py-5 text-base font-mono font-medium text-yellow-900 shadow-sm ring-1 ring-inset ring-gray-300">
-                            </div>
-                        </div>
-
-                        <div class="col-span-full">
-                            <label for="resource_accession_number" class="block text-sm/6 font-mono font-medium italic text-yellow-900">
-                                Please input the accession number.
-                            </label>
-                            <div class="mt-2">
-                                <input type="string" name="resource_accession_number" id="" class="block w-full rounded-md border-0 pl-2 px-3 py-5 text-base font-mono font-medium text-yellow-900 shadow-sm ring-1 ring-inset ring-gray-300">
-                            </div>
-                        </div>
-
-                        <div class="mt-6">
-                            <button type="submit" class="rounded-md bg-yellow-900 px-3 py-2 text-sm font-mono text-white shadow-sm hover:bg-yellow-600">Save</button>
-                        </div>
-                    </form>
-
-                </div>
+        
+        <div class="carousel-section mt-20">
+            <div class="carousel-placeholder">
+                <a href="/collection" class="flex mx-2 hover:text-amber-700">Go to Collections</a>
+                <img src="{{ asset('images/gabi_point.png') }}" alt="Go to Collections">
             </div>
         </div>
-    </div>
-
-    <div class="text-center mt-5">
-        <a href="/collection" class="text-xl font-bold text-yellow-900 hover:text-yellow-600">Go to Collections</a>
     </div>
 
     <footer class="mt-20 text-center py-4 relative" style='background-color: #fddc58'>
