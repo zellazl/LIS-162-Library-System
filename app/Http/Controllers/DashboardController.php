@@ -26,7 +26,7 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         if ($user->role == 'admin') {
-            abort(404);
+            return view('sorry');
         } elseif ($user->role == 'user') {
             return view('dashboard'); // Return a 404 error for admin users trying to access the dashboard
         }
